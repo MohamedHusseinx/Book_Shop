@@ -1,801 +1,1007 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shop - Book Shop</title>
     <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../main.css" />
     <style>
-        /* Global Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: #f5f5f5;
-            color: #333;
-            line-height: 1.6;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        /* Header Styles */
-        header {
-            background-color: #2c3e50;
-            color: white;
-            padding: 20px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
+      /* Global Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: #f5f5f5;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+
+      /* Header Styles */
+      header {
+        background-color: #2c3e50;
+        color: white;
+        padding: 20px 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .logo span {
+        color: #e74c3c;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+        align-items: center;
+      }
+
+      nav ul li {
+        margin-left: 20px;
+      }
+
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+      }
+
+      nav ul li a:hover {
+        color: #e74c3c;
+      }
+
+      .cart-btn {
+        background-color: #e74c3c;
+        padding: 8px 15px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        position: relative;
+      }
+
+      .cart-btn:hover {
+        background-color: #c0392b;
+        color: white;
+      }
+
+      .cart-icon {
+        margin-right: 8px;
+        font-size: 16px;
+      }
+
+      .cart-count {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background-color: #2c3e50;
+        color: white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+      }
+
+      /* Shop Section */
+      .shop {
+        padding: 60px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 32px;
+        color: #2c3e50;
+      }
+
+      /* Filters */
+      .shop-filters {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .filter-group {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .filter-label {
+        font-weight: 500;
+      }
+
+      .filter-select {
+        padding: 8px 15px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        background-color: white;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .filter-select:hover {
+        border-color: #2c3e50;
+      }
+
+      .filter-select:focus {
+        outline: none;
+        border-color: #2c3e50;
+        box-shadow: 0 0 0 2px rgba(44, 62, 80, 0.1);
+      }
+
+      .search-box {
+        position: relative;
+        width: 300px;
+      }
+
+      .search-input {
+        width: 100%;
+        padding: 8px 15px 8px 40px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+      }
+
+      .search-icon {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #7f8c8d;
+      }
+
+      /* Books Grid */
+      .books-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 30px;
+      }
+
+      .book-card {
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s;
+      }
+
+      .book-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .book-img {
+        height: 300px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .book-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+
+      .book-card:hover .book-img img {
+        transform: scale(1.05);
+      }
+
+      .book-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #e74c3c;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 12px;
+        font-weight: bold;
+      }
+
+      .book-info {
+        padding: 20px;
+      }
+
+      .book-title {
+        font-size: 18px;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: #2c3e50;
+      }
+
+      .book-author {
+        color: #7f8c8d;
+        margin-bottom: 15px;
+        font-size: 14px;
+      }
+
+      .book-price {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 15px;
+      }
+
+      .price-current {
+        font-weight: bold;
+        color: #e74c3c;
+        font-size: 18px;
+      }
+
+      .price-original {
+        text-decoration: line-through;
+        color: #7f8c8d;
+        font-size: 14px;
+      }
+
+      .add-to-cart {
+        background-color: #2c3e50;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .add-to-cart:hover {
+        background-color: #1a252f;
+      }
+
+      .add-to-favorites {
+        background-color: transparent;
+        color: #e74c3c;
+        border: 1px solid #e74c3c;
+        padding: 8px 15px;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .add-to-favorites:hover {
+        background-color: #e74c3c;
+        color: white;
+      }
+
+      .book-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+      }
+
+      /* Pagination */
+      .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+        gap: 10px;
+      }
+
+      .pagination-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        border: 1px solid #ddd;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .pagination-btn:hover,
+      .pagination-btn.active {
+        background-color: #2c3e50;
+        color: white;
+        border-color: #2c3e50;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #1a252f;
+        color: #bdc3c7;
+        padding: 40px 0 20px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        margin-bottom: 30px;
+      }
+
+      .footer-column h3 {
+        color: white;
+        margin-bottom: 20px;
+        font-size: 18px;
+      }
+
+      .footer-column ul {
+        list-style: none;
+      }
+
+      .footer-column ul li {
+        margin-bottom: 10px;
+      }
+
+      .footer-column ul li a {
+        color: #bdc3c7;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-column ul li a:hover {
+        color: #e74c3c;
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid #2c3e50;
+        font-size: 14px;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 768px) {
         .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+          flex-direction: column;
+          text-align: center;
         }
-        
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-        }
-        
-        .logo span {
-            color: #e74c3c;
-        }
-        
+
         nav ul {
-            display: flex;
-            list-style: none;
-            align-items: center;
+          margin-top: 20px;
+          flex-wrap: wrap;
+          justify-content: center;
         }
-        
+
         nav ul li {
-            margin-left: 20px;
+          margin: 5px 10px;
         }
-        
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-        }
-        
-        nav ul li a:hover {
-            color: #e74c3c;
-        }
-        
-        .cart-btn {
-            background-color: #e74c3c;
-            padding: 8px 15px;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-        
-        .cart-btn:hover {
-            background-color: #c0392b;
-            color: white;
-        }
-        
-        .cart-icon {
-            margin-right: 8px;
-            font-size: 16px;
-        }
-        
-        .cart-count {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background-color: #2c3e50;
-            color: white;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-        }
-        
-        /* Shop Section */
-        .shop {
-            padding: 60px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 32px;
-            color: #2c3e50;
-        }
-        
-        /* Filters */
+
         .shop-filters {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-            gap: 15px;
+          flex-direction: column;
         }
-        
+
         .filter-group {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+          flex-wrap: wrap;
         }
-        
-        .filter-label {
-            font-weight: 500;
-        }
-        
-        .filter-select {
-            padding: 8px 15px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-            background-color: white;
-        }
-        
+
         .search-box {
-            position: relative;
-            width: 300px;
+          width: 100%;
         }
-        
-        .search-input {
-            width: 100%;
-            padding: 8px 15px 8px 40px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-        }
-        
-        .search-icon {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #7f8c8d;
-        }
-        
-        /* Books Grid */
-        .books-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        
-        .book-card {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-        }
-        
-        .book-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        
-        .book-img {
-            height: 300px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .book-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .book-card:hover .book-img img {
-            transform: scale(1.05);
-        }
-        
-        .book-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: #e74c3c;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-        
-        .book-info {
-            padding: 20px;
-        }
-        
-        .book-title {
-            font-size: 18px;
-            margin-bottom: 10px;
-            font-weight: bold;
-            color: #2c3e50;
-        }
-        
-        .book-author {
-            color: #7f8c8d;
-            margin-bottom: 15px;
-            font-size: 14px;
-        }
-        
-        .book-price {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 15px;
-        }
-        
-        .price-current {
-            font-weight: bold;
-            color: #e74c3c;
-            font-size: 18px;
-        }
-        
-        .price-original {
-            text-decoration: line-through;
-            color: #7f8c8d;
-            font-size: 14px;
-        }
-        
-        .add-to-cart {
-            background-color: #2c3e50;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .add-to-cart:hover {
-            background-color: #1a252f;
-        }
-        
-        .add-to-favorites {
-            background-color: transparent;
-            color: #e74c3c;
-            border: 1px solid #e74c3c;
-            padding: 8px 15px;
-            border-radius: 5px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .add-to-favorites:hover {
-            background-color: #e74c3c;
-            color: white;
-        }
-        
-        .book-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-        
-        /* Pagination */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            margin-top: 50px;
-            gap: 10px;
-        }
-        
-        .pagination-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: white;
-            border: 1px solid #ddd;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .pagination-btn:hover, .pagination-btn.active {
-            background-color: #2c3e50;
-            color: white;
-            border-color: #2c3e50;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: #1a252f;
-            color: #bdc3c7;
-            padding: 40px 0 20px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-        
-        .footer-column h3 {
-            color: white;
-            margin-bottom: 20px;
-            font-size: 18px;
-        }
-        
-        .footer-column ul {
-            list-style: none;
-        }
-        
-        .footer-column ul li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-column ul li a {
-            color: #bdc3c7;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-column ul li a:hover {
-            color: #e74c3c;
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #2c3e50;
-            font-size: 14px;
-        }
-        
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            nav ul {
-                margin-top: 20px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            nav ul li {
-                margin: 5px 10px;
-            }
-            
-            .shop-filters {
-                flex-direction: column;
-            }
-            
-            .filter-group {
-                flex-wrap: wrap;
-            }
-            
-            .search-box {
-                width: 100%;
-            }
-        }
+      }
+
+      /* Add these styles to your existing CSS */
+      .no-results {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding: 40px;
+        color: #7f8c8d;
+      }
+
+      .no-results i {
+        font-size: 50px;
+        margin-bottom: 20px;
+        color: #ddd;
+      }
+
+      .no-results h3 {
+        font-size: 24px;
+        margin-bottom: 10px;
+        color: #2c3e50;
+      }
+
+      .no-results p {
+        font-size: 16px;
+      }
+
+      .book-card {
+        transition: all 0.3s ease;
+      }
+
+      .book-card.hidden {
+        display: none;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Header -->
     <header>
-        <div class="container header-container">
-            <div class="logo">Book<span>Shop</span></div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="shop.html" class="active">Shop</a></li>
-                    <li><a href="categories.html">Categories</a></li>
-                    <li><a href="#">Best Sellers</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li>
-                        <a href="cart.html" class="cart-btn">
-                            <i class="fas fa-shopping-cart cart-icon"></i>
-                            Cart
-                            <span class="cart-count">3</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+      <div class="container header-container">
+        <div class="logo">Book<span>Shop</span></div>
+        <nav>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="./shop.html">Shop</a></li>
+            <li><a href="./Categories.html">Categories</a></li>
+            <li><a href="./mycart.html">Cart</a></li>
+            <li><a href="./myfavouritespage.html">Favourites</a></li>
+            <li><a href="./contactus.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
-    
+
     <!-- Shop Section -->
     <section class="shop">
-        <div class="container">
-            <h2 class="section-title">Browse Our Collection</h2>
-            
-            <!-- Filters -->
-            <div class="shop-filters">
-                <div class="filter-group">
-                    <span class="filter-label">Sort by:</span>
-                    <select class="filter-select">
-                        <option>Featured</option>
-                        <option>Price: Low to High</option>
-                        <option>Price: High to Low</option>
-                        <option>Newest Arrivals</option>
-                        <option>Best Selling</option>
-                    </select>
-                    
-                    <span class="filter-label">Category:</span>
-                    <select class="filter-select">
-                        <option>All Categories</option>
-                        <option>Fiction</option>
-                        <option>Mystery & Thriller</option>
-                        <option>Science Fiction</option>
-                        <option>Romance</option>
-                        <option>Biography</option>
-                        <option>History</option>
-                        <option>Self-Help</option>
-                        <option>Fantasy</option>
-                    </select>
-                </div>
-                
-                <div class="search-box">
-                    <i class="fas fa-search search-icon"></i>
-                    <input type="text" class="search-input" placeholder="Search books...">
-                </div>
-            </div>
-            
-            <!-- Books Grid -->
-            <div class="books-grid">
-                <!-- Book 1 -->
-                <div class="book-card">
-                    <div class="book-img">
-                        <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="The Silent Patient">
-                        <span class="book-badge">Bestseller</span>
-                    </div>
-                    <div class="book-info">
-                        <h3 class="book-title">The Silent Patient</h3>
-                        <p class="book-author">Alex Michaelides</p>
-                        <div class="book-price">
-                            <div>
-                                <span class="price-current">$12.99</span>
-                                <span class="price-original">$16.99</span>
-                            </div>
-                            <span>⭐ 4.5</span>
-                        </div>
-                        <div class="book-actions">
-                            <button class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                                Add to Cart
-                            </button>
-                            <button class="add-to-favorites">
-                                <i class="far fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Book 2 -->
-                <div class="book-card">
-                    <div class="book-img">
-                        <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Educated">
-                    </div>
-                    <div class="book-info">
-                        <h3 class="book-title">Educated</h3>
-                        <p class="book-author">Tara Westover</p>
-                        <div class="book-price">
-                            <div>
-                                <span class="price-current">$14.99</span>
-                            </div>
-                            <span>⭐ 4.7</span>
-                        </div>
-                        <div class="book-actions">
-                            <button class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                                Add to Cart
-                            </button>
-                            <button class="add-to-favorites">
-                                <i class="far fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Book 3 -->
-                <div class="book-card">
-                    <div class="book-img">
-                        <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="To Kill a Mockingbird">
-                        <span class="book-badge">Classic</span>
-                    </div>
-                    <div class="book-info">
-                        <h3 class="book-title">To Kill a Mockingbird</h3>
-                        <p class="book-author">Harper Lee</p>
-                        <div class="book-price">
-                            <div>
-                                <span class="price-current">$10.99</span>
-                                <span class="price-original">$12.99</span>
-                            </div>
-                            <span>⭐ 4.8</span>
-                        </div>
-                        <div class="book-actions">
-                            <button class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                                Add to Cart
-                            </button>
-                            <button class="add-to-favorites">
-                                <i class="far fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Book 4 -->
-                <div class="book-card">
-                    <div class="book-img">
-                        <img src="https://images.unsplash.com/photo-1531346878377-a5be20888e57?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="1984">
-                    </div>
-                    <div class="book-info">
-                        <h3 class="book-title">1984</h3>
-                        <p class="book-author">George Orwell</p>
-                        <div class="book-price">
-                            <div>
-                                <span class="price-current">$9.99</span>
-                            </div>
-                            <span>⭐ 4.6</span>
-                        </div>
-                        <div class="book-actions">
-                            <button class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                                Add to Cart
-                            </button>
-                            <button class="add-to-favorites">
-                                <i class="far fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Book 5 -->
-                <div class="book-card">
-                    <div class="book-img">
-                        <img src="https://images.unsplash.com/photo-1535905557558-afc4877a26fc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="The Great Gatsby">
-                        <span class="book-badge">Sale</span>
-                    </div>
-                    <div class="book-info">
-                        <h3 class="book-title">The Great Gatsby</h3>
-                        <p class="book-author">F. Scott Fitzgerald</p>
-                        <div class="book-price">
-                            <div>
-                                <span class="price-current">$8.99</span>
-                                <span class="price-original">$14.99</span>
-                            </div>
-                            <span>⭐ 4.4</span>
-                        </div>
-                        <div class="book-actions">
-                            <button class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                                Add to Cart
-                            </button>
-                            <button class="add-to-favorites">
-                                <i class="far fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Book 6 -->
-                <div class="book-card">
-                    <div class="book-img">
-                        <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Where the Crawdads Sing">
-                    </div>
-                    <div class="book-info">
-                        <h3 class="book-title">Where the Crawdads Sing</h3>
-                        <p class="book-author">Delia Owens</p>
-                        <div class="book-price">
-                            <div>
-                                <span class="price-current">$13.99</span>
-                            </div>
-                            <span>⭐ 4.8</span>
-                        </div>
-                        <div class="book-actions">
-                            <button class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                                Add to Cart
-                            </button>
-                            <button class="add-to-favorites">
-                                <i class="far fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Book 7 -->
-                <div class="book-card">
-                    <div class="book-img">
-                        <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Dune">
-                        <span class="book-badge">New</span>
-                    </div>
-                    <div class="book-info">
-                        <h3 class="book-title">Dune</h3>
-                        <p class="book-author">Frank Herbert</p>
-                        <div class="book-price">
-                            <div>
-                                <span class="price-current">$15.99</span>
-                            </div>
-                            <span>⭐ 4.7</span>
-                        </div>
-                        <div class="book-actions">
-                            <button class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                                Add to Cart
-                            </button>
-                            <button class="add-to-favorites">
-                                <i class="far fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Book 8 -->
-                <div class="book-card">
-                    <div class="book-img">
-                        <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="The Hobbit">
-                    </div>
-                    <div class="book-info">
-                        <h3 class="book-title">The Hobbit</h3>
-                        <p class="book-author">J.R.R. Tolkien</p>
-                        <div class="book-price">
-                            <div>
-                                <span class="price-current">$11.99</span>
-                                <span class="price-original">$14.99</span>
-                            </div>
-                            <span>⭐ 4.9</span>
-                        </div>
-                        <div class="book-actions">
-                            <button class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i>
-                                Add to Cart
-                            </button>
-                            <button class="add-to-favorites">
-                                <i class="far fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Pagination -->
-            <div class="pagination">
-                <button class="pagination-btn"><i class="fas fa-chevron-left"></i></button>
-                <button class="pagination-btn active">1</button>
-                <button class="pagination-btn">2</button>
-                <button class="pagination-btn">3</button>
-                <button class="pagination-btn">4</button>
-                <button class="pagination-btn"><i class="fas fa-chevron-right"></i></button>
-            </div>
+      <div class="container">
+        <h2 class="section-title">Our Books</h2>
+
+        <!-- Filters -->
+        <div class="shop-filters">
+          <div class="filter-group">
+            <label class="filter-label">Category:</label>
+            <select class="filter-select">
+              <option value="all">All Categories</option>
+              <option value="fiction">Fiction</option>
+              <option value="non-fiction">Non-Fiction</option>
+              <option value="mystery">Mystery</option>
+              <option value="romance">Romance</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label class="filter-label">Sort By:</label>
+            <select class="filter-select">
+              <option value="popular">Most Popular</option>
+              <option value="newest">Newest</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+            </select>
+          </div>
+          <div class="search-box">
+            <i class="fas fa-search search-icon"></i>
+            <input
+              type="text"
+              class="search-input"
+              placeholder="Search books..."
+            />
+          </div>
         </div>
+
+        <!-- Books Grid -->
+        <div class="books-grid">
+          <!-- Book 1 -->
+          <div class="book-card" data-id="1">
+            <div class="book-img">
+              <img
+                src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                alt="The Silent Patient"
+              />
+              <span class="book-badge">Bestseller</span>
+            </div>
+            <div class="book-info">
+              <h3 class="book-title">The Silent Patient</h3>
+              <p class="book-author">By Alex Michaelides</p>
+              <div class="book-price">
+                <div>
+                  <span class="price-current">$12.99</span>
+                  <span class="price-original">$16.99</span>
+                </div>
+                <span>⭐ 4.5</span>
+              </div>
+              <div class="book-actions">
+                <button class="add-to-cart">
+                  <i class="fas fa-shopping-cart"></i>
+                  Add to Cart
+                </button>
+                <button class="add-to-favorites">
+                  <i class="far fa-heart"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Book 2 -->
+          <div class="book-card" data-id="2">
+            <div class="book-img">
+              <img
+                src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                alt="Educated"
+              />
+            </div>
+            <div class="book-info">
+              <h3 class="book-title">Educated</h3>
+              <p class="book-author">By Tara Westover</p>
+              <div class="book-price">
+                <div>
+                  <span class="price-current">$14.99</span>
+                </div>
+                <span>⭐ 4.7</span>
+              </div>
+              <div class="book-actions">
+                <button class="add-to-cart">
+                  <i class="fas fa-shopping-cart"></i>
+                  Add to Cart
+                </button>
+                <button class="add-to-favorites">
+                  <i class="far fa-heart"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Book 3 -->
+          <div class="book-card" data-id="3">
+            <div class="book-img">
+              <img
+                src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                alt="To Kill a Mockingbird"
+              />
+              <span class="book-badge">Classic</span>
+            </div>
+            <div class="book-info">
+              <h3 class="book-title">To Kill a Mockingbird</h3>
+              <p class="book-author">By Harper Lee</p>
+              <div class="book-price">
+                <div>
+                  <span class="price-current">$10.99</span>
+                  <span class="price-original">$12.99</span>
+                </div>
+                <span>⭐ 4.8</span>
+              </div>
+              <div class="book-actions">
+                <button class="add-to-cart">
+                  <i class="fas fa-shopping-cart"></i>
+                  Add to Cart
+                </button>
+                <button class="add-to-favorites">
+                  <i class="far fa-heart"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Book 4 -->
+          <div class="book-card" data-id="4">
+            <div class="book-img">
+              <img
+                src="https://images.unsplash.com/photo-1531346878377-a5be20888e57?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                alt="1984"
+              />
+            </div>
+            <div class="book-info">
+              <h3 class="book-title">1984</h3>
+              <p class="book-author">By George Orwell</p>
+              <div class="book-price">
+                <div>
+                  <span class="price-current">$9.99</span>
+                </div>
+                <span>⭐ 4.6</span>
+              </div>
+              <div class="book-actions">
+                <button class="add-to-cart">
+                  <i class="fas fa-shopping-cart"></i>
+                  Add to Cart
+                </button>
+                <button class="add-to-favorites">
+                  <i class="far fa-heart"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Book 5 -->
+          <div class="book-card" data-id="5">
+            <div class="book-img">
+              <img
+                src="https://images.unsplash.com/photo-1535905557558-afc4877a26fc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                alt="The Great Gatsby"
+              />
+              <span class="book-badge">Sale</span>
+            </div>
+            <div class="book-info">
+              <h3 class="book-title">The Great Gatsby</h3>
+              <p class="book-author">By F. Scott Fitzgerald</p>
+              <div class="book-price">
+                <div>
+                  <span class="price-current">$8.99</span>
+                  <span class="price-original">$14.99</span>
+                </div>
+                <span>⭐ 4.4</span>
+              </div>
+              <div class="book-actions">
+                <button class="add-to-cart">
+                  <i class="fas fa-shopping-cart"></i>
+                  Add to Cart
+                </button>
+                <button class="add-to-favorites">
+                  <i class="far fa-heart"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Book 6 -->
+          <div class="book-card" data-id="6">
+            <div class="book-img">
+              <img
+                src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                alt="Where the Crawdads Sing"
+              />
+            </div>
+            <div class="book-info">
+              <h3 class="book-title">Where the Crawdads Sing</h3>
+              <p class="book-author">By Delia Owens</p>
+              <div class="book-price">
+                <div>
+                  <span class="price-current">$13.99</span>
+                </div>
+                <span>⭐ 4.8</span>
+              </div>
+              <div class="book-actions">
+                <button class="add-to-cart">
+                  <i class="fas fa-shopping-cart"></i>
+                  Add to Cart
+                </button>
+                <button class="add-to-favorites">
+                  <i class="far fa-heart"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Book 7 -->
+          <div class="book-card" data-id="7">
+            <div class="book-img">
+              <img
+                src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                alt="Dune"
+              />
+              <span class="book-badge">New</span>
+            </div>
+            <div class="book-info">
+              <h3 class="book-title">Dune</h3>
+              <p class="book-author">By Frank Herbert</p>
+              <div class="book-price">
+                <div>
+                  <span class="price-current">$15.99</span>
+                </div>
+                <span>⭐ 4.7</span>
+              </div>
+              <div class="book-actions">
+                <button class="add-to-cart">
+                  <i class="fas fa-shopping-cart"></i>
+                  Add to Cart
+                </button>
+                <button class="add-to-favorites">
+                  <i class="far fa-heart"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Book 8 -->
+          <div class="book-card" data-id="8">
+            <div class="book-img">
+              <img
+                src="https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                alt="The Hobbit"
+              />
+            </div>
+            <div class="book-info">
+              <h3 class="book-title">The Hobbit</h3>
+              <p class="book-author">By J.R.R. Tolkien</p>
+              <div class="book-price">
+                <div>
+                  <span class="price-current">$11.99</span>
+                  <span class="price-original">$14.99</span>
+                </div>
+                <span>⭐ 4.9</span>
+              </div>
+              <div class="book-actions">
+                <button class="add-to-cart">
+                  <i class="fas fa-shopping-cart"></i>
+                  Add to Cart
+                </button>
+                <button class="add-to-favorites">
+                  <i class="far fa-heart"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+          <button class="pagination-btn active">1</button>
+          <button class="pagination-btn">2</button>
+          <button class="pagination-btn">3</button>
+          <button class="pagination-btn">Next</button>
+        </div>
+      </div>
     </section>
-    
+
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Book Shop</h3>
-                    <p>Your one-stop shop for all your reading needs. We offer a wide selection of books across all genres.</p>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="shop.html">Shop</a></li>
-                        <li><a href="categories.html">Categories</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Customer Service</h3>
-                    <ul>
-                        <li><a href="contact.html">Contact Us</a></li>
-                        <li><a href="#">FAQs</a></li>
-                        <li><a href="#">Shipping Policy</a></li>
-                        <li><a href="#">Returns</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 Book Shop. All Rights Reserved.</p>
-            </div>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>Book Shop</h3>
+            <p>
+              Your one-stop shop for all your reading needs. We offer a wide
+              selection of books across all genres.
+            </p>
+          </div>
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="shop.html">Shop</a></li>
+              <li><a href="categories.html">Categories</a></li>
+              <li><a href="about.html">About Us</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Customer Service</h3>
+            <ul>
+              <li><a href="contact.html">Contact Us</a></li>
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Shipping Policy</a></li>
+              <li><a href="#">Returns</a></li>
+            </ul>
+          </div>
         </div>
+        <div class="copyright">
+          <p>&copy; 2025 Book Shop. All Rights Reserved.</p>
+        </div>
+      </div>
     </footer>
 
+    <script src="../script.js"></script>
     <script>
-        // Shopping functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add to cart functionality
-            const addToCartButtons = document.querySelectorAll('.add-to-cart');
-            let cartCount = 3; // Starting with 3 items as shown in header
-            
-            addToCartButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const bookCard = this.closest('.book-card');
-                    const bookTitle = bookCard.querySelector('.book-title').textContent;
-                    const bookPrice = bookCard.querySelector('.price-current').textContent;
-                    
-                    // Animation
-                    this.innerHTML = '<i class="fas fa-check"></i> Added';
-                    this.style.backgroundColor = '#0acf83';
-                    
-                    setTimeout(() => {
-                        this.innerHTML = '<i class="fas fa-shopping-cart"></i> Add to Cart';
-                        this.style.backgroundColor = '#2c3e50';
-                    }, 2000);
-                    
-                    // Update cart count
-                    cartCount++;
-                    document.querySelectorAll('.cart-count').forEach(count => {
-                        count.textContent = cartCount;
-                    });
-                    
-                    // In a real app, you would add the item to the cart here
-                    console.log(`Added to cart: ${bookTitle} (${bookPrice})`);
-                });
-            });
-            
-            // Add to favorites functionality
-            const addToFavoritesButtons = document.querySelectorAll('.add-to-favorites');
-            
-            addToFavoritesButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const bookCard = this.closest('.book-card');
-                    const bookTitle = bookCard.querySelector('.book-title').textContent;
-                    
-                    // Toggle heart icon
-                    const icon = this.querySelector('i');
-                    if (icon.classList.contains('far')) {
-                        icon.classList.remove('far');
-                        icon.classList.add('fas');
-                        this.style.backgroundColor = '#e74c3c';
-                        this.style.color = 'white';
-                        
-                        // In a real app, you would add the item to favorites here
-                        console.log(`Added to favorites: ${bookTitle}`);
-                    } else {
-                        icon.classList.remove('fas');
-                        icon.classList.add('far');
-                        this.style.backgroundColor = 'transparent';
-                        this.style.color = '#e74c3c';
-                        
-                        // In a real app, you would remove the item from favorites here
-                        console.log(`Removed from favorites: ${bookTitle}`);
-                    }
-                });
-            });
-            
-            // Pagination functionality
-            const paginationButtons = document.querySelectorAll('.pagination-btn:not(:first-child):not(:last-child)');
-            
-            paginationButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    document.querySelector('.pagination-btn.active').classList.remove('active');
-                    this.classList.add('active');
-                    // In a real app, you would load the corresponding page here
-                });
-            });
+      // Initialize cart and favorites count on page load
+      document.addEventListener("DOMContentLoaded", () => {
+        updateCartCount();
+        updateFavoritesCount();
+        updateFavoritesButtons();
+        initializeSearch();
+        initializeFilters();
+      });
+
+      // Function to update favorites button states
+      function updateFavoritesButtons() {
+        const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+        document.querySelectorAll(".book-card").forEach((card) => {
+          const heartBtn = card.querySelector(".add-to-favorites i");
+          const bookId = card.dataset.id;
+          if (favorites.some((item) => item.id === bookId)) {
+            heartBtn.classList.remove("far");
+            heartBtn.classList.add("fas");
+            heartBtn.parentElement.style.backgroundColor = "#e74c3c";
+            heartBtn.parentElement.style.color = "white";
+          } else {
+            heartBtn.classList.remove("fas");
+            heartBtn.classList.add("far");
+            heartBtn.parentElement.style.backgroundColor = "transparent";
+            heartBtn.parentElement.style.color = "#e74c3c";
+          }
         });
+      }
+
+      // Initialize filters and sorting
+      function initializeFilters() {
+        const categorySelect = document.querySelector(
+          '.filter-select[value="category"]'
+        );
+        const sortSelect = document.querySelector(
+          '.filter-select[value="sort"]'
+        );
+        const booksGrid = document.querySelector(".books-grid");
+        const allBooks = Array.from(booksGrid.querySelectorAll(".book-card"));
+
+        // Add data-category attribute to each book
+        allBooks.forEach((book) => {
+          const badge = book.querySelector(".book-badge");
+          if (badge) {
+            book.dataset.category = badge.textContent.toLowerCase();
+          } else {
+            book.dataset.category = "all";
+          }
+        });
+
+        // Category filter
+        categorySelect.addEventListener("change", (e) => {
+          const selectedCategory = e.target.value.toLowerCase();
+          filterBooks(selectedCategory, sortSelect.value);
+        });
+
+        // Sort filter
+        sortSelect.addEventListener("change", (e) => {
+          const selectedSort = e.target.value;
+          filterBooks(categorySelect.value, selectedSort);
+        });
+      }
+
+      // Filter and sort books
+      function filterBooks(category, sortBy) {
+        const booksGrid = document.querySelector(".books-grid");
+        const allBooks = Array.from(booksGrid.querySelectorAll(".book-card"));
+        let filteredBooks = allBooks;
+
+        // Apply category filter
+        if (category !== "all") {
+          filteredBooks = filteredBooks.filter(
+            (book) => book.dataset.category === category
+          );
+        }
+
+        // Apply sorting
+        filteredBooks.sort((a, b) => {
+          const priceA = parseFloat(
+            a.querySelector(".price-current").textContent.replace("$", "")
+          );
+          const priceB = parseFloat(
+            b.querySelector(".price-current").textContent.replace("$", "")
+          );
+          const ratingA = parseFloat(
+            a.querySelector(".book-price span").textContent.replace("⭐ ", "")
+          );
+          const ratingB = parseFloat(
+            b.querySelector(".book-price span").textContent.replace("⭐ ", "")
+          );
+
+          switch (sortBy) {
+            case "price-low":
+              return priceA - priceB;
+            case "price-high":
+              return priceB - priceA;
+            case "rating":
+              return ratingB - ratingA;
+            case "newest":
+              return parseInt(b.dataset.id) - parseInt(a.dataset.id);
+            default:
+              return 0;
+          }
+        });
+
+        // Clear the grid
+        booksGrid.innerHTML = "";
+
+        // Add filtered and sorted books
+        filteredBooks.forEach((book) => {
+          booksGrid.appendChild(book);
+        });
+
+        // Show "no results" message if no books match
+        if (filteredBooks.length === 0) {
+          if (!document.querySelector(".no-results")) {
+            const noResults = document.createElement("div");
+            noResults.className = "no-results";
+            noResults.innerHTML = `
+              <i class="fas fa-filter"></i>
+              <h3>No books found</h3>
+              <p>Try adjusting your filters</p>
+            `;
+            booksGrid.appendChild(noResults);
+          }
+        } else {
+          const noResults = document.querySelector(".no-results");
+          if (noResults) {
+            noResults.remove();
+          }
+        }
+      }
+
+      // Search functionality
+      function initializeSearch() {
+        const searchInput = document.querySelector(".search-input");
+        const booksGrid = document.querySelector(".books-grid");
+        const allBooks = Array.from(booksGrid.querySelectorAll(".book-card"));
+
+        searchInput.addEventListener("input", (e) => {
+          const searchTerm = e.target.value.toLowerCase().trim();
+
+          allBooks.forEach((book) => {
+            const title = book
+              .querySelector(".book-title")
+              .textContent.toLowerCase();
+            const author = book
+              .querySelector(".book-author")
+              .textContent.toLowerCase();
+
+            if (title.includes(searchTerm) || author.includes(searchTerm)) {
+              book.style.display = "block";
+            } else {
+              book.style.display = "none";
+            }
+          });
+
+          // Show "no results" message if no books match
+          const visibleBooks = allBooks.filter(
+            (book) => book.style.display !== "none"
+          );
+          if (visibleBooks.length === 0) {
+            if (!document.querySelector(".no-results")) {
+              const noResults = document.createElement("div");
+              noResults.className = "no-results";
+              noResults.innerHTML = `
+                <i class="fas fa-search"></i>
+                <h3>No books found</h3>
+                <p>Try adjusting your search or filters</p>
+              `;
+              booksGrid.appendChild(noResults);
+            }
+          } else {
+            const noResults = document.querySelector(".no-results");
+            if (noResults) {
+              noResults.remove();
+            }
+          }
+        });
+      }
+
+      // Add event listeners to all "Add to Cart" and "Add to Favorites" buttons
+      document.addEventListener("click", (e) => {
+        if (e.target.classList.contains("add-to-cart")) {
+          const bookCard = e.target.closest(".book-card");
+          const book = {
+            id: bookCard.dataset.id,
+            title: bookCard.querySelector(".book-title").textContent,
+            author: bookCard.querySelector(".book-author").textContent,
+            price: bookCard.querySelector(".price-current").textContent,
+            image: bookCard.querySelector(".book-img img").src,
+          };
+          addToCart(book);
+        }
+
+        if (
+          e.target.classList.contains("add-to-favorites") ||
+          e.target.closest(".add-to-favorites")
+        ) {
+          const bookCard = e.target.closest(".book-card");
+          const book = {
+            id: bookCard.dataset.id,
+            title: bookCard.querySelector(".book-title").textContent,
+            author: bookCard.querySelector(".book-author").textContent,
+            price: bookCard.querySelector(".price-current").textContent,
+            image: bookCard.querySelector(".book-img img").src,
+          };
+          toggleFavorite(book);
+          updateFavoritesButtons();
+        }
+      });
     </script>
-</body>
+  </body>
 </html>

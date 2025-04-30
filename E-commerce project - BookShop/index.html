@@ -1,458 +1,491 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Book Shop - Your Online Bookstore</title>
     <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-   <!-- <style>
-        /* Global Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: #f5f5f5;
-            color: #333;
-            line-height: 1.6;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        /* Header Styles */
-        header {
-            background-color: #2c3e50;
-            color: white;
-            padding: 20px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="main.css" />
+    <style>
+      /* Global Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: #f5f5f5;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+
+      /* Header Styles */
+      header {
+        background-color: #2c3e50;
+        color: white;
+        padding: 20px 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .logo span {
+        color: #e74c3c;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+        align-items: center;
+      }
+
+      nav ul li {
+        margin-left: 20px;
+      }
+
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+      }
+
+      nav ul li a:hover {
+        color: #e74c3c;
+      }
+
+      .login-btn {
+        background-color: #e74c3c;
+        padding: 8px 15px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+      }
+
+      .login-btn:hover {
+        background-color: #c0392b;
+        color: white;
+      }
+
+      .login-icon {
+        margin-right: 8px;
+        font-size: 16px;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
+        background-size: cover;
+        background-position: center;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: white;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+      }
+
+      .hero p {
+        font-size: 20px;
+        margin-bottom: 30px;
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: #e74c3c;
+        color: white;
+        padding: 12px 30px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      .btn:hover {
+        background-color: #c0392b;
+      }
+
+      /* Featured Books */
+      .featured {
+        padding: 60px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 32px;
+        color: #2c3e50;
+      }
+
+      .books-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 30px;
+      }
+
+      .book-card {
+        background-color: white;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+
+      .book-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .book-img {
+        height: 300px;
+        overflow: hidden;
+      }
+
+      .book-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .book-info {
+        padding: 20px;
+      }
+
+      .book-title {
+        font-size: 18px;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+
+      .book-author {
+        color: #7f8c8d;
+        margin-bottom: 15px;
+        font-size: 14px;
+      }
+
+      .book-price {
+        font-weight: bold;
+        color: #e74c3c;
+        font-size: 18px;
+      }
+
+      /* Newsletter */
+      .newsletter {
+        background-color: #2c3e50;
+        color: white;
+        padding: 60px 0;
+        text-align: center;
+      }
+
+      .newsletter h2 {
+        margin-bottom: 20px;
+      }
+
+      .newsletter p {
+        margin-bottom: 30px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .newsletter-form {
+        display: flex;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .newsletter-form input {
+        flex: 1;
+        padding: 12px 15px;
+        border: none;
+        border-radius: 5px 0 0 5px;
+        font-size: 16px;
+      }
+
+      .newsletter-form button {
+        background-color: #e74c3c;
+        color: white;
+        border: none;
+        padding: 0 20px;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      .newsletter-form button:hover {
+        background-color: #c0392b;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #1a252f;
+        color: #bdc3c7;
+        padding: 40px 0 20px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        margin-bottom: 30px;
+      }
+
+      .footer-column h3 {
+        color: white;
+        margin-bottom: 20px;
+        font-size: 18px;
+      }
+
+      .footer-column ul {
+        list-style: none;
+      }
+
+      .footer-column ul li {
+        margin-bottom: 10px;
+      }
+
+      .footer-column ul li a {
+        color: #bdc3c7;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-column ul li a:hover {
+        color: #e74c3c;
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid #2c3e50;
+        font-size: 14px;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 768px) {
         .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+          flex-direction: column;
+          text-align: center;
         }
-        
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-        }
-        
-        .logo span {
-            color: #e74c3c;
-        }
-        
+
         nav ul {
-            display: flex;
-            list-style: none;
-            align-items: center;
+          margin-top: 20px;
+          flex-wrap: wrap;
+          justify-content: center;
         }
-        
+
         nav ul li {
-            margin-left: 20px;
+          margin: 5px 10px;
         }
-        
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-        }
-        
-        nav ul li a:hover {
-            color: #e74c3c;
-        }
-        
-        .login-btn {
-            background-color: #e74c3c;
-            padding: 8px 15px;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .login-btn:hover {
-            background-color: #c0392b;
-            color: white;
-        }
-        
-        .login-icon {
-            margin-right: 8px;
-            font-size: 16px;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 500px;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: white;
-        }
-        
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
+
         .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
+          font-size: 36px;
         }
-        
+
         .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
+          font-size: 18px;
         }
-        
-        .btn {
-            display: inline-block;
-            background-color: #e74c3c;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-        
-        .btn:hover {
-            background-color: #c0392b;
-        }
-        
-        /* Featured Books */
-        .featured {
-            padding: 60px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 32px;
-            color: #2c3e50;
-        }
-        
-        .books-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        
-        .book-card {
-            background-color: white;
-            border-radius: 5px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        
-        .book-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .book-img {
-            height: 300px;
-            overflow: hidden;
-        }
-        
-        .book-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .book-info {
-            padding: 20px;
-        }
-        
-        .book-title {
-            font-size: 18px;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-        
-        .book-author {
-            color: #7f8c8d;
-            margin-bottom: 15px;
-            font-size: 14px;
-        }
-        
-        .book-price {
-            font-weight: bold;
-            color: #e74c3c;
-            font-size: 18px;
-        }
-        
-        /* Newsletter */
-        .newsletter {
-            background-color: #2c3e50;
-            color: white;
-            padding: 60px 0;
-            text-align: center;
-        }
-        
-        .newsletter h2 {
-            margin-bottom: 20px;
-        }
-        
-        .newsletter p {
-            margin-bottom: 30px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
+
         .newsletter-form {
-            display: flex;
-            max-width: 500px;
-            margin: 0 auto;
+          flex-direction: column;
         }
-        
+
         .newsletter-form input {
-            flex: 1;
-            padding: 12px 15px;
-            border: none;
-            border-radius: 5px 0 0 5px;
-            font-size: 16px;
+          border-radius: 5px;
+          margin-bottom: 10px;
         }
-        
+
         .newsletter-form button {
-            background-color: #e74c3c;
-            color: white;
-            border: none;
-            padding: 0 20px;
-            border-radius: 0 5px 5px 0;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s;
+          border-radius: 5px;
+          padding: 12px;
         }
-        
-        .newsletter-form button:hover {
-            background-color: #c0392b;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: #1a252f;
-            color: #bdc3c7;
-            padding: 40px 0 20px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-        
-        .footer-column h3 {
-            color: white;
-            margin-bottom: 20px;
-            font-size: 18px;
-        }
-        
-        .footer-column ul {
-            list-style: none;
-        }
-        
-        .footer-column ul li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-column ul li a {
-            color: #bdc3c7;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-column ul li a:hover {
-            color: #e74c3c;
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #2c3e50;
-            font-size: 14px;
-        }
-        
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            nav ul {
-                margin-top: 20px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            nav ul li {
-                margin: 5px 10px;
-            }
-            
-            .hero h1 {
-                font-size: 36px;
-            }
-            
-            .hero p {
-                font-size: 18px;
-            }
-            
-            .newsletter-form {
-                flex-direction: column;
-            }
-            
-            .newsletter-form input {
-                border-radius: 5px;
-                margin-bottom: 10px;
-            }
-            
-            .newsletter-form button {
-                border-radius: 5px;
-                padding: 12px;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Header -->
     <header>
-        <link rel="stylesheet" href="styles/main.css">
-        <div class="container header-container">
-            <div class="logo">Book<span>Shop</span></div>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Shop</a></li>
-                    <li><a href="#">Categories</a></li>
-                    <li><a href="#">Best Sellers</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li>
-                        <a href="#" class="login-btn">
-                            <i class="fas fa-user login-icon"></i>
-                            Login
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+      <div class="container header-container">
+        <div class="logo">Book<span>Shop</span></div>
+        <nav>
+          <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./Pages/shop.html">Shop</a></li>
+            <li><a href="./Pages/Categories.html">Categories</a></li>
+            <li><a href="./Pages/mycart.html">Cart</a></li>
+            <li><a href="./Pages/myfavouritespage.html">Favourites</a></li>
+            <li><a href="#">Best Sellers</a></li>
+            <li><a href="Pages/contactus.html">Contact</a></li>
+            <li>
+              <a href="Pages/Registration.html" class="login-btn">
+                <i class="fas fa-user login-icon"></i>
+                Login
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
-    
+
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Discover Your Next Favorite Book</h1>
-                <p>Browse our extensive collection of books across all genres. From bestsellers to hidden gems, we have something for every reader.</p>
-                <a href="#" class="btn">Shop Now</a>
-            </div>
+      <div class="container">
+        <div class="hero-content">
+          <h1>Discover Your Next Favorite Book</h1>
+          <p>
+            Browse our extensive collection of books across all genres. From
+            bestsellers to hidden gems, we have something for every reader.
+          </p>
+          <a href="./Pages/shop.html" class="btn">Shop Now</a>
         </div>
+      </div>
     </section>
-    
+
     <!-- Featured Books -->
     <section class="featured">
-        <div class="container">
-            <h2 class="section-title">Featured Books</h2>
-            <div class="books-grid">
-                <!-- Book 1 -->
-                <div class="book-card">
-                    <div class="book-img">
-                        <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Book Cover">
-                    </div>
-                    <div class="book-info">
-                        <h3 class="book-title">The Silent Patient</h3>
-                        <p class="book-author">By Alex Michaelides</p>
-                        <p class="book-price">$12.99</p>
-                    </div>
-                </div>
-                
-                <!-- Book 2 -->
-                <div class="book-card">
-                    <div class="book-img">
-                        <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Book Cover">
-                    </div>
-                    <div class="book-info">
-                        <h3 class="book-title">Educated</h3>
-                        <p class="book-author">By Tara Westover</p>
-                        <p class="book-price">$14.99</p>
-                    </div>
-                </div>
-                
-                <!-- Book 3 -->
-                <div class="book-card">
-                    <div class="book-img">
-                        <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Book Cover">
-                    </div>
-                    <div class="book-info">
-                        <h3 class="book-title">To Kill a Mockingbird</h3>
-                        <p class="book-author">By Harper Lee</p>
-                        <p class="book-price">$10.99</p>
-                    </div>
-                </div>
-                
-                <!-- Book 4 -->
-                <div class="book-card">
-                    <div class="book-img">
-                        <img src="https://images.unsplash.com/photo-1531346878377-a5be20888e57?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Book Cover">
-                    </div>
-                    <div class="book-info">
-                        <h3 class="book-title">1984</h3>
-                        <p class="book-author">By George Orwell</p>
-                        <p class="book-price">$9.99</p>
-                    </div>
-                </div>
+      <div class="container">
+        <h2 class="section-title">Featured Books</h2>
+        <div class="books-grid">
+          <!-- Book 1 -->
+          <div class="book-card" data-id="1">
+            <div class="book-img">
+              <img
+                src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                alt="Book Cover"
+              />
             </div>
+            <div class="book-info">
+              <h3 class="book-title">The Silent Patient</h3>
+              <p class="book-author">By Alex Michaelides</p>
+              <p class="book-price">$12.99</p>
+              <button class="add-to-cart">Add to Cart</button>
+              <button class="add-to-favorites">Add to Favorites</button>
+            </div>
+          </div>
+
+          <!-- Book 2 -->
+          <div class="book-card" data-id="2">
+            <div class="book-img">
+              <img
+                src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                alt="Book Cover"
+              />
+            </div>
+            <div class="book-info">
+              <h3 class="book-title">Educated</h3>
+              <p class="book-author">By Tara Westover</p>
+              <p class="book-price">$14.99</p>
+              <button class="add-to-cart">Add to Cart</button>
+              <button class="add-to-favorites">Add to Favorites</button>
+            </div>
+          </div>
+
+          <!-- Book 3 -->
+          <div class="book-card" data-id="3">
+            <div class="book-img">
+              <img
+                src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                alt="Book Cover"
+              />
+            </div>
+            <div class="book-info">
+              <h3 class="book-title">To Kill a Mockingbird</h3>
+              <p class="book-author">By Harper Lee</p>
+              <p class="book-price">$10.99</p>
+              <button class="add-to-cart">Add to Cart</button>
+              <button class="add-to-favorites">Add to Favorites</button>
+            </div>
+          </div>
+
+          <!-- Book 4 -->
+          <div class="book-card" data-id="4">
+            <div class="book-img">
+              <img
+                src="https://images.unsplash.com/photo-1531346878377-a5be20888e57?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                alt="Book Cover"
+              />
+            </div>
+            <div class="book-info">
+              <h3 class="book-title">1984</h3>
+              <p class="book-author">By George Orwell</p>
+              <p class="book-price">$9.99</p>
+              <button class="add-to-cart">Add to Cart</button>
+              <button class="add-to-favorites">Add to Favorites</button>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
-    
+
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Book Haven</h3>
-                    <p>Your one-stop shop for all your reading needs. We offer a wide selection of books across all genres.</p>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Shop</a></li>
-                        <li><a href="#">Categories</a></li>
-                        <li><a href="#">About Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Customer Service</h3>
-                    <ul>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">FAQs</a></li>
-                        <li><a href="#">Shipping Policy</a></li>
-                        <li><a href="#">Returns</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 Book Shop. All Rights Reserved.</p>
-            </div>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>Book Haven</h3>
+            <p>
+              Your one-stop shop for all your reading needs. We offer a wide
+              selection of books across all genres.
+            </p>
+          </div>
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Shop</a></li>
+              <li><a href="#">Categories</a></li>
+              <li><a href="#">About Us</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Customer Service</h3>
+            <ul>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Shipping Policy</a></li>
+              <li><a href="#">Returns</a></li>
+            </ul>
+          </div>
         </div>
+        <div class="copyright">
+          <p>&copy; 2025 Book Shop. All Rights Reserved.</p>
+        </div>
+      </div>
     </footer>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
