@@ -477,7 +477,7 @@
           <ul>
             <li><a href="../index.html">Home</a></li>
             <li><a href="./shop.html">Shop</a></li>
-            <li><a href="./Categories.html">Categories</a></li>
+
             <li><a href="./mycart.html">Cart</a></li>
             <li><a href="./myfavouritespage.html">Favourites</a></li>
 
@@ -617,13 +617,16 @@
         }
 
         let subtotal = 0;
-        cartItemsList.innerHTML = cart
-          .map((item) => {
-            const itemTotal =
-              parseFloat(item.price.replace("$", "")) * item.quantity;
-            subtotal += itemTotal;
+        let cartItemsHTML = "";
 
-            return `
+        // Use for loop to iterate through cart items
+        for (let i = 0; i < cart.length; i++) {
+          const item = cart[i];
+          const itemTotal =
+            parseFloat(item.price.replace("$", "")) * item.quantity;
+          subtotal += itemTotal;
+
+          cartItemsHTML += `
             <div class="cart-item" data-id="${item.id}">
               <div class="cart-img">
                 <img src="${item.image}" alt="${item.title}">
@@ -650,8 +653,9 @@
               </div>
             </div>
           `;
-          })
-          .join("");
+        }
+
+        cartItemsList.innerHTML = cartItemsHTML;
 
         // Update totals
         document.getElementById("subtotal").textContent = `$${subtotal.toFixed(

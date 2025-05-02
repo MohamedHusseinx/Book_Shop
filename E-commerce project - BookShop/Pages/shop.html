@@ -206,6 +206,7 @@
         height: 300px;
         overflow: hidden;
         position: relative;
+        background-color: #f5f5f5;
       }
 
       .book-img img {
@@ -213,6 +214,37 @@
         height: 100%;
         object-fit: cover;
         transition: transform 0.5s;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .book-img img.loaded {
+        opacity: 1;
+      }
+
+      .book-img .loading-placeholder {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          #f0f0f0 25%,
+          #e0e0e0 50%,
+          #f0f0f0 75%
+        );
+        background-size: 200% 100%;
+        animation: loading 1.5s infinite;
+      }
+
+      @keyframes loading {
+        0% {
+          background-position: 200% 0;
+        }
+        100% {
+          background-position: -200% 0;
+        }
       }
 
       .book-card:hover .book-img img {
@@ -455,7 +487,7 @@
           <ul>
             <li><a href="../index.html">Home</a></li>
             <li><a href="./shop.html">Shop</a></li>
-            <li><a href="./Categories.html">Categories</a></li>
+
             <li><a href="./mycart.html">Cart</a></li>
             <li><a href="./myfavouritespage.html">Favourites</a></li>
             <li><a href="./contactus.html">Contact</a></li>
@@ -472,16 +504,6 @@
         <!-- Filters -->
         <div class="shop-filters">
           <div class="filter-group">
-            <label class="filter-label">Category:</label>
-            <select class="filter-select">
-              <option value="all">All Categories</option>
-              <option value="fiction">Fiction</option>
-              <option value="non-fiction">Non-Fiction</option>
-              <option value="mystery">Mystery</option>
-              <option value="romance">Romance</option>
-            </select>
-          </div>
-          <div class="filter-group">
             <label class="filter-label">Sort By:</label>
             <select class="filter-select">
               <option value="popular">Most Popular</option>
@@ -489,6 +511,9 @@
               <option value="price-low">Price: Low to High</option>
               <option value="price-high">Price: High to Low</option>
             </select>
+          </div>
+          <div class="filter-group">
+            <select class="filter-select" hidden></select>
           </div>
           <div class="search-box">
             <i class="fas fa-search search-icon"></i>
@@ -505,9 +530,12 @@
           <!-- Book 1 -->
           <div class="book-card" data-id="1">
             <div class="book-img">
+              <div class="loading-placeholder"></div>
               <img
                 src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
                 alt="The Silent Patient"
+                loading="lazy"
+                onload="this.classList.add('loaded')"
               />
               <span class="book-badge">Bestseller</span>
             </div>
@@ -536,9 +564,12 @@
           <!-- Book 2 -->
           <div class="book-card" data-id="2">
             <div class="book-img">
+              <div class="loading-placeholder"></div>
               <img
                 src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
                 alt="Educated"
+                loading="lazy"
+                onload="this.classList.add('loaded')"
               />
             </div>
             <div class="book-info">
@@ -565,9 +596,12 @@
           <!-- Book 3 -->
           <div class="book-card" data-id="3">
             <div class="book-img">
+              <div class="loading-placeholder"></div>
               <img
                 src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
                 alt="To Kill a Mockingbird"
+                loading="lazy"
+                onload="this.classList.add('loaded')"
               />
               <span class="book-badge">Classic</span>
             </div>
@@ -596,9 +630,12 @@
           <!-- Book 4 -->
           <div class="book-card" data-id="4">
             <div class="book-img">
+              <div class="loading-placeholder"></div>
               <img
                 src="https://images.unsplash.com/photo-1531346878377-a5be20888e57?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
                 alt="1984"
+                loading="lazy"
+                onload="this.classList.add('loaded')"
               />
             </div>
             <div class="book-info">
@@ -625,9 +662,12 @@
           <!-- Book 5 -->
           <div class="book-card" data-id="5">
             <div class="book-img">
+              <div class="loading-placeholder"></div>
               <img
                 src="https://images.unsplash.com/photo-1535905557558-afc4877a26fc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
                 alt="The Great Gatsby"
+                loading="lazy"
+                onload="this.classList.add('loaded')"
               />
               <span class="book-badge">Sale</span>
             </div>
@@ -656,9 +696,12 @@
           <!-- Book 6 -->
           <div class="book-card" data-id="6">
             <div class="book-img">
+              <div class="loading-placeholder"></div>
               <img
                 src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
                 alt="Where the Crawdads Sing"
+                loading="lazy"
+                onload="this.classList.add('loaded')"
               />
             </div>
             <div class="book-info">
@@ -685,9 +728,12 @@
           <!-- Book 7 -->
           <div class="book-card" data-id="7">
             <div class="book-img">
+              <div class="loading-placeholder"></div>
               <img
                 src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
                 alt="Dune"
+                loading="lazy"
+                onload="this.classList.add('loaded')"
               />
               <span class="book-badge">New</span>
             </div>
@@ -715,9 +761,12 @@
           <!-- Book 8 -->
           <div class="book-card" data-id="8">
             <div class="book-img">
+              <div class="loading-placeholder"></div>
               <img
                 src="https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
                 alt="The Hobbit"
+                loading="lazy"
+                onload="this.classList.add('loaded')"
               />
             </div>
             <div class="book-info">
@@ -798,7 +847,228 @@
         updateFavoritesButtons();
         initializeSearch();
         initializeFilters();
+        displayBooks();
       });
+
+      // Array of books
+      const books = [
+        {
+          id: "1",
+          title: "The Silent Patient",
+          author: "By Alex Michaelides",
+          price: "$12.99",
+          originalPrice: "$16.99",
+          image:
+            "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+          badge: "Bestseller",
+          rating: "4.5",
+        },
+        {
+          id: "2",
+          title: "Educated",
+          author: "By Tara Westover",
+          price: "$14.99",
+          image:
+            "https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+          rating: "4.7",
+        },
+        {
+          id: "3",
+          title: "To Kill a Mockingbird",
+          author: "By Harper Lee",
+          price: "$10.99",
+          originalPrice: "$12.99",
+          image:
+            "https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+          badge: "Classic",
+          rating: "4.8",
+        },
+        {
+          id: "4",
+          title: "1984",
+          author: "By George Orwell",
+          price: "$9.99",
+          image:
+            "https://images.unsplash.com/photo-1531346878377-a5be20888e57?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+          rating: "4.6",
+        },
+        {
+          id: "5",
+          title: "The Great Gatsby",
+          author: "By F. Scott Fitzgerald",
+          price: "$8.99",
+          originalPrice: "$14.99",
+          image:
+            "https://images.unsplash.com/photo-1535905557558-afc4877a26fc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+          badge: "Sale",
+          rating: "4.4",
+        },
+        {
+          id: "6",
+          title: "Where the Crawdads Sing",
+          author: "By Delia Owens",
+          price: "$13.99",
+          image:
+            "https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+          rating: "4.8",
+        },
+        {
+          id: "7",
+          title: "Dune",
+          author: "By Frank Herbert",
+          price: "$15.99",
+          image:
+            "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+          badge: "New",
+          rating: "4.7",
+        },
+        {
+          id: "8",
+          title: "The Hobbit",
+          author: "By J.R.R. Tolkien",
+          price: "$11.99",
+          originalPrice: "$14.99",
+          image:
+            "https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+          rating: "4.9",
+        },
+        {
+          id: "9",
+          title: "The Catcher in the Rye",
+          author: "By J.D. Salinger",
+          price: "$10.50",
+          image:
+            "https://img.youm7.com/ArticleImgs/2019/12/28/25828-80516463_2497217173884032_6534289125883772928_n.jpg",
+          rating: "4.3",
+        },
+        {
+          id: "10",
+          title: "Pride and Prejudice",
+          author: "By Jane Austen",
+          price: "$9.95",
+          image: "https://m.media-amazon.com/images/I/81JJPDNlxSL.jpg",
+          rating: "4.7",
+        },
+        {
+          id: "11",
+          title: "The Silent Patient",
+          author: "By Alex Michaelides",
+          price: "$12.99",
+          originalPrice: "$16.99",
+          image: "https://m.media-amazon.com/images/I/81eB+7+CkUL.jpg",
+          badge: "Bestseller",
+          rating: "4.5",
+        },
+        {
+          id: "12",
+          title: "Educated",
+          author: "By Tara Westover",
+          price: "$14.99",
+          image: "https://m.media-amazon.com/images/I/81WojUxbbFL.jpg",
+          rating: "4.7",
+        },
+
+        {
+          id: "13",
+          title: "1984",
+          author: "By George Orwell",
+          price: "$9.99",
+          image: "https://m.media-amazon.com/images/I/71kxa1-0mfL.jpg",
+          rating: "4.6",
+        },
+
+        {
+          id: "14",
+          title: "Dune",
+          author: "By Frank Herbert",
+          price: "$15.99",
+          image: "https://m.media-amazon.com/images/I/91uwocAMtSL.jpg",
+          badge: "New",
+          rating: "4.7",
+        },
+        {
+          id: "15",
+          title: "The Hobbit",
+          author: "By J.R.R. Tolkien",
+          price: "$11.99",
+          originalPrice: "$14.99",
+          image: "https://m.media-amazon.com/images/I/91b0C2YNSrL.jpg",
+          rating: "4.9",
+        },
+
+        {
+          id: "16",
+          title: "Pride and Prejudice",
+          author: "By Jane Austen",
+          price: "$9.95",
+          image: "https://m.media-amazon.com/images/I/81JJPDNlxSL.jpg",
+          rating: "4.7",
+        },
+        {
+          id: "17",
+          title: "The Alchemist",
+          author: "By Paulo Coelho",
+          price: "$11.00",
+          image: "https://m.media-amazon.com/images/I/71aFt4+OTOL.jpg",
+          rating: "4.6",
+        },
+        {
+          id: "18",
+          title: "Becoming",
+          author: "By Michelle Obama",
+          price: "$16.99",
+          image: "https://m.media-amazon.com/images/I/81h2gWPTYJL.jpg",
+          rating: "4.8",
+        },
+
+        {
+          id: "19",
+          title: "Atomic Habits",
+          author: "By James Clear",
+          price: "$13.99",
+          image: "https://m.media-amazon.com/images/I/91bYsX41DVL.jpg",
+          rating: "4.9",
+        },
+        {
+          id: "20",
+          title: "Sapiens",
+          author: "By Yuval Noah Harari",
+          price: "$18.00",
+          image: "https://m.media-amazon.com/images/I/713jIoMO3UL.jpg",
+          rating: "4.8",
+        },
+
+        {
+          id: "17",
+          title: "The Four Agreements",
+          author: "By Don Miguel Ruiz",
+          price: "$7.95",
+          image: "https://m.media-amazon.com/images/I/71sBtM3Yi5L.jpg",
+          rating: "4.6",
+        },
+        {
+          id: "18",
+          title: "The Subtle Art of Not Giving a F*ck",
+          author: "By Mark Manson",
+          price: "$12.99",
+          image: "https://m.media-amazon.com/images/I/71QKQ9mwV7L.jpg",
+          rating: "4.5",
+        },
+
+        {
+          id: "19",
+          title: "It Ends With Us",
+          author: "By Colleen Hoover",
+          price: "$10.50",
+          image: "https://m.media-amazon.com/images/I/71PNGYHykrL.jpg",
+          rating: "4.5",
+        },
+      ];
+
+      // Function to display books
+      function displayBooks(page = 1, itemsPerPage = 8) {
+        displayFilteredBooks(books, page, itemsPerPage);
+      }
 
       // Function to update favorites button states
       function updateFavoritesButtons() {
@@ -822,65 +1092,42 @@
 
       // Initialize filters and sorting
       function initializeFilters() {
-        const categorySelect = document.querySelector(
-          '.filter-select[value="category"]'
-        );
-        const sortSelect = document.querySelector(
-          '.filter-select[value="sort"]'
-        );
-        const booksGrid = document.querySelector(".books-grid");
-        const allBooks = Array.from(booksGrid.querySelectorAll(".book-card"));
-
-        // Add data-category attribute to each book
-        allBooks.forEach((book) => {
-          const badge = book.querySelector(".book-badge");
-          if (badge) {
-            book.dataset.category = badge.textContent.toLowerCase();
-          } else {
-            book.dataset.category = "all";
-          }
-        });
+        const categorySelect = document.querySelector(".filter-select");
+        const sortSelect = document.querySelectorAll(".filter-select")[1];
 
         // Category filter
-        categorySelect.addEventListener("change", (e) => {
-          const selectedCategory = e.target.value.toLowerCase();
-          filterBooks(selectedCategory, sortSelect.value);
-        });
+        // categorySelect.addEventListener("change", (e) => {
+        //   const selectedCategory = e.target.value.toLowerCase();
+        //   filterBooks(selectedCategory, sortSelect.value);
+        // });
 
         // Sort filter
         sortSelect.addEventListener("change", (e) => {
           const selectedSort = e.target.value;
-          filterBooks(categorySelect.value, selectedSort);
+          filterBooks("all", selectedSort);
         });
       }
 
       // Filter and sort books
-      function filterBooks(category, sortBy) {
-        const booksGrid = document.querySelector(".books-grid");
-        const allBooks = Array.from(booksGrid.querySelectorAll(".book-card"));
-        let filteredBooks = allBooks;
+      function filterBooks(category, sortBy, page = 1, itemsPerPage = 8) {
+        let filteredBooks = [...books];
 
         // Apply category filter
         if (category !== "all") {
-          filteredBooks = filteredBooks.filter(
-            (book) => book.dataset.category === category
-          );
+          filteredBooks = filteredBooks.filter((book) => {
+            if (book.badge) {
+              return book.badge.toLowerCase() === category;
+            }
+            return false;
+          });
         }
 
         // Apply sorting
         filteredBooks.sort((a, b) => {
-          const priceA = parseFloat(
-            a.querySelector(".price-current").textContent.replace("$", "")
-          );
-          const priceB = parseFloat(
-            b.querySelector(".price-current").textContent.replace("$", "")
-          );
-          const ratingA = parseFloat(
-            a.querySelector(".book-price span").textContent.replace("⭐ ", "")
-          );
-          const ratingB = parseFloat(
-            b.querySelector(".book-price span").textContent.replace("⭐ ", "")
-          );
+          const priceA = parseFloat(a.price.replace("$", ""));
+          const priceB = parseFloat(b.price.replace("$", ""));
+          const ratingA = parseFloat(a.rating);
+          const ratingB = parseFloat(b.rating);
 
           switch (sortBy) {
             case "price-low":
@@ -890,85 +1137,208 @@
             case "rating":
               return ratingB - ratingA;
             case "newest":
-              return parseInt(b.dataset.id) - parseInt(a.dataset.id);
+              return parseInt(b.id) - parseInt(a.id);
             default:
               return 0;
           }
         });
 
-        // Clear the grid
-        booksGrid.innerHTML = "";
+        // Display filtered books with pagination
+        displayFilteredBooks(filteredBooks, page);
+      }
 
-        // Add filtered and sorted books
-        filteredBooks.forEach((book) => {
-          booksGrid.appendChild(book);
-        });
+      // Function to display filtered books with pagination
+      function displayFilteredBooks(filteredBooks, page = 1, itemsPerPage = 8) {
+        const booksGrid = document.querySelector(".books-grid");
+        const paginationContainer = document.querySelector(".pagination");
+        let booksHTML = "";
 
-        // Show "no results" message if no books match
-        if (filteredBooks.length === 0) {
-          if (!document.querySelector(".no-results")) {
-            const noResults = document.createElement("div");
-            noResults.className = "no-results";
-            noResults.innerHTML = `
-              <i class="fas fa-filter"></i>
+        // Calculate total pages
+        const totalPages = Math.ceil(filteredBooks.length / itemsPerPage);
+
+        // Calculate start and end index for current page
+        const startIndex = (page - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const currentBooks = filteredBooks.slice(startIndex, endIndex);
+
+        if (currentBooks.length === 0) {
+          booksHTML = `
+            <div class="no-results">
+              <i class="fas fa-search"></i>
               <h3>No books found</h3>
-              <p>Try adjusting your filters</p>
-            `;
-            booksGrid.appendChild(noResults);
-          }
+              <p>Try adjusting your search</p>
+            </div>
+          `;
         } else {
-          const noResults = document.querySelector(".no-results");
-          if (noResults) {
-            noResults.remove();
+          for (let i = 0; i < currentBooks.length; i++) {
+            const book = currentBooks[i];
+            booksHTML += `
+              <div class="book-card" data-id="${book.id}">
+                <div class="book-img">
+                  <div class="loading-placeholder"></div>
+                  <img 
+                    data-src="${book.image}" 
+                    alt="${book.title}"
+                    class="lazy"
+                  >
+                  ${
+                    book.badge
+                      ? `<span class="book-badge">${book.badge}</span>`
+                      : ""
+                  }
+                </div>
+                <div class="book-info">
+                  <h3 class="book-title">${book.title}</h3>
+                  <p class="book-author">${book.author}</p>
+                  <div class="book-price">
+                    <div>
+                      <span class="price-current">${book.price}</span>
+                      ${
+                        book.originalPrice
+                          ? `<span class="price-original">${book.originalPrice}</span>`
+                          : ""
+                      }
+                    </div>
+                    <span>⭐ ${book.rating}</span>
+                  </div>
+                  <div class="book-actions">
+                    <button class="add-to-cart">
+                      <i class="fas fa-shopping-cart"></i>
+                      Add to Cart
+                    </button>
+                    <button class="add-to-favorites">
+                      <i class="far fa-heart"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            `;
           }
         }
+
+        booksGrid.innerHTML = booksHTML;
+
+        // Initialize lazy loading for images
+        const lazyImages = booksGrid.querySelectorAll("img.lazy");
+
+        if ("loading" in HTMLImageElement.prototype) {
+          // Browser supports native lazy loading
+          lazyImages.forEach((img) => {
+            img.setAttribute("loading", "lazy");
+            img.src = img.dataset.src;
+            img.onload = () => {
+              img.classList.add("loaded");
+              const placeholder = img.previousElementSibling;
+              if (
+                placeholder &&
+                placeholder.classList.contains("loading-placeholder")
+              ) {
+                placeholder.remove();
+              }
+            };
+          });
+        } else {
+          // Fallback for browsers that don't support lazy loading
+          const imageObserver = new IntersectionObserver(
+            (entries, observer) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  const img = entry.target;
+                  img.src = img.dataset.src;
+                  img.onload = () => {
+                    img.classList.add("loaded");
+                    const placeholder = img.previousElementSibling;
+                    if (
+                      placeholder &&
+                      placeholder.classList.contains("loading-placeholder")
+                    ) {
+                      placeholder.remove();
+                    }
+                  };
+                  observer.unobserve(img);
+                }
+              });
+            },
+            {
+              rootMargin: "50px 0px",
+              threshold: 0.1,
+            }
+          );
+
+          lazyImages.forEach((img) => {
+            imageObserver.observe(img);
+          });
+        }
+
+        // Generate pagination buttons
+        let paginationHTML = "";
+        if (filteredBooks.length > 0) {
+          // Previous button
+          paginationHTML += `
+            <button class="pagination-btn ${
+              page === 1 ? "disabled" : ""
+            }" data-page="${page - 1}">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+          `;
+
+          // Page numbers
+          for (let i = 1; i <= totalPages; i++) {
+            paginationHTML += `
+              <button class="pagination-btn ${
+                i === page ? "active" : ""
+              }" data-page="${i}">
+                ${i}
+              </button>
+            `;
+          }
+
+          // Next button
+          paginationHTML += `
+            <button class="pagination-btn ${
+              page === totalPages ? "disabled" : ""
+            }" data-page="${page + 1}">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          `;
+        }
+
+        paginationContainer.innerHTML = paginationHTML;
+
+        // Add event listeners to pagination buttons
+        paginationContainer
+          .querySelectorAll(".pagination-btn")
+          .forEach((button) => {
+            button.addEventListener("click", () => {
+              const newPage = parseInt(button.dataset.page);
+              if (newPage >= 1 && newPage <= totalPages) {
+                displayFilteredBooks(filteredBooks, newPage);
+              }
+            });
+          });
+
+        updateFavoritesButtons();
       }
 
       // Search functionality
       function initializeSearch() {
         const searchInput = document.querySelector(".search-input");
-        const booksGrid = document.querySelector(".books-grid");
-        const allBooks = Array.from(booksGrid.querySelectorAll(".book-card"));
+
+        if (!searchInput) {
+          console.error("Search input element not found");
+          return;
+        }
 
         searchInput.addEventListener("input", (e) => {
           const searchTerm = e.target.value.toLowerCase().trim();
-
-          allBooks.forEach((book) => {
-            const title = book
-              .querySelector(".book-title")
-              .textContent.toLowerCase();
-            const author = book
-              .querySelector(".book-author")
-              .textContent.toLowerCase();
-
-            if (title.includes(searchTerm) || author.includes(searchTerm)) {
-              book.style.display = "block";
-            } else {
-              book.style.display = "none";
-            }
-          });
-
-          // Show "no results" message if no books match
-          const visibleBooks = allBooks.filter(
-            (book) => book.style.display !== "none"
+          let filteredBooks = books.filter(
+            (book) =>
+              book.title.toLowerCase().includes(searchTerm) ||
+              book.author.toLowerCase().includes(searchTerm)
           );
-          if (visibleBooks.length === 0) {
-            if (!document.querySelector(".no-results")) {
-              const noResults = document.createElement("div");
-              noResults.className = "no-results";
-              noResults.innerHTML = `
-                <i class="fas fa-search"></i>
-                <h3>No books found</h3>
-                <p>Try adjusting your search or filters</p>
-              `;
-              booksGrid.appendChild(noResults);
-            }
-          } else {
-            const noResults = document.querySelector(".no-results");
-            if (noResults) {
-              noResults.remove();
-            }
-          }
+
+          // Display filtered books with pagination
+          displayFilteredBooks(filteredBooks, 1);
         });
       }
 
@@ -976,13 +1346,8 @@
       document.addEventListener("click", (e) => {
         if (e.target.classList.contains("add-to-cart")) {
           const bookCard = e.target.closest(".book-card");
-          const book = {
-            id: bookCard.dataset.id,
-            title: bookCard.querySelector(".book-title").textContent,
-            author: bookCard.querySelector(".book-author").textContent,
-            price: bookCard.querySelector(".price-current").textContent,
-            image: bookCard.querySelector(".book-img img").src,
-          };
+          const bookId = bookCard.dataset.id;
+          const book = books.find((b) => b.id === bookId);
           addToCart(book);
         }
 
@@ -991,13 +1356,8 @@
           e.target.closest(".add-to-favorites")
         ) {
           const bookCard = e.target.closest(".book-card");
-          const book = {
-            id: bookCard.dataset.id,
-            title: bookCard.querySelector(".book-title").textContent,
-            author: bookCard.querySelector(".book-author").textContent,
-            price: bookCard.querySelector(".price-current").textContent,
-            image: bookCard.querySelector(".book-img img").src,
-          };
+          const bookId = bookCard.dataset.id;
+          const book = books.find((b) => b.id === bookId);
           toggleFavorite(book);
           updateFavoritesButtons();
         }
