@@ -78,40 +78,6 @@
         color: #e74c3c;
       }
 
-      .cart-btn {
-        background-color: #e74c3c;
-        padding: 8px 15px;
-        border-radius: 5px;
-        display: flex;
-        align-items: center;
-        position: relative;
-      }
-
-      .cart-btn:hover {
-        background-color: #c0392b;
-        color: white;
-      }
-
-      .cart-icon {
-        margin-right: 8px;
-        font-size: 16px;
-      }
-
-      .cart-count {
-        position: absolute;
-        top: -8px;
-        right: -8px;
-        background-color: #2c3e50;
-        color: white;
-        border-radius: 50%;
-        width: 20px;
-        height: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 12px;
-      }
-
       /* Shop Section */
       .shop {
         padding: 60px 0;
@@ -122,64 +88,6 @@
         margin-bottom: 40px;
         font-size: 32px;
         color: #2c3e50;
-      }
-
-      /* Filters */
-      .shop-filters {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 30px;
-        flex-wrap: wrap;
-        gap: 15px;
-      }
-
-      .filter-group {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-      }
-
-      .filter-label {
-        font-weight: 500;
-      }
-
-      .filter-select {
-        padding: 8px 15px;
-        border-radius: 5px;
-        border: 1px solid #ddd;
-        background-color: white;
-        cursor: pointer;
-        transition: all 0.3s;
-      }
-
-      .filter-select:hover {
-        border-color: #2c3e50;
-      }
-
-      .filter-select:focus {
-        outline: none;
-        border-color: #2c3e50;
-        box-shadow: 0 0 0 2px rgba(44, 62, 80, 0.1);
-      }
-
-      .search-box {
-        position: relative;
-        width: 300px;
-      }
-
-      .search-input {
-        width: 100%;
-        padding: 8px 15px 8px 40px;
-        border-radius: 5px;
-        border: 1px solid #ddd;
-      }
-
-      .search-icon {
-        position: absolute;
-        left: 15px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: #7f8c8d;
       }
 
       /* Books Grid */
@@ -209,60 +117,25 @@
         background-color: #f5f5f5;
       }
 
-      .book-card-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-}
-
-.book-card-link:hover {
-    text-decoration: none;
-}
-
-.book-card {
-    position: relative;
-}
-
-.book-actions {
-    padding: 0 20px 20px;
-}
+      .login-btn {
+        background-color: #e74c3c;
+        padding: 8px 15px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+      }
 
       .book-img img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         transition: transform 0.5s;
-        opacity: 0;
+        opacity: 1;
         transition: opacity 0.3s ease;
       }
 
       .book-img img.loaded {
         opacity: 1;
-      }
-
-      .book-img .loading-placeholder {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          #f0f0f0 25%,
-          #e0e0e0 50%,
-          #f0f0f0 75%
-        );
-        background-size: 200% 100%;
-        animation: loading 1.5s infinite;
-      }
-
-      @keyframes loading {
-        0% {
-          background-position: 200% 0;
-        }
-        100% {
-          background-position: -200% 0;
-        }
       }
 
       .book-card:hover .book-img img {
@@ -290,6 +163,15 @@
         margin-bottom: 10px;
         font-weight: bold;
         color: #2c3e50;
+      }
+
+      .book-title-link {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .book-title-link:hover {
+        color: #e74c3c;
       }
 
       .book-author {
@@ -360,139 +242,38 @@
         margin-top: 15px;
       }
 
-      /* Pagination */
       .pagination {
         display: flex;
         justify-content: center;
-        margin-top: 50px;
-        gap: 10px;
+        margin-top: 30px;
       }
 
       .pagination-btn {
-        width: 40px;
-        height: 40px;
-        border-radius: 5px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: white;
+        background-color: #f5f5f5;
         border: 1px solid #ddd;
+        padding: 8px 15px;
+        margin: 0 5px;
+        border-radius: 5px;
         cursor: pointer;
         transition: all 0.3s;
       }
 
-      .pagination-btn:hover,
       .pagination-btn.active {
         background-color: #2c3e50;
         color: white;
         border-color: #2c3e50;
       }
 
-      /* Footer */
-      footer {
-        background-color: #1a252f;
-        color: #bdc3c7;
-        padding: 40px 0 20px;
+      .pagination-btn.disabled {
+        background-color: #ddd;
+        color: #aaa;
+        cursor: not-allowed;
       }
 
-      .footer-content {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 30px;
-        margin-bottom: 30px;
-      }
-
-      .footer-column h3 {
+      .pagination-btn:hover:not(.disabled):not(.active) {
+        background-color: #e74c3c;
         color: white;
-        margin-bottom: 20px;
-        font-size: 18px;
-      }
-
-      .footer-column ul {
-        list-style: none;
-      }
-
-      .footer-column ul li {
-        margin-bottom: 10px;
-      }
-
-      .footer-column ul li a {
-        color: #bdc3c7;
-        text-decoration: none;
-        transition: color 0.3s;
-      }
-
-      .footer-column ul li a:hover {
-        color: #e74c3c;
-      }
-
-      .copyright {
-        text-align: center;
-        padding-top: 20px;
-        border-top: 1px solid #2c3e50;
-        font-size: 14px;
-      }
-
-      /* Responsive Styles */
-      @media (max-width: 768px) {
-        .header-container {
-          flex-direction: column;
-          text-align: center;
-        }
-
-        nav ul {
-          margin-top: 20px;
-          flex-wrap: wrap;
-          justify-content: center;
-        }
-
-        nav ul li {
-          margin: 5px 10px;
-        }
-
-        .shop-filters {
-          flex-direction: column;
-        }
-
-        .filter-group {
-          flex-wrap: wrap;
-        }
-
-        .search-box {
-          width: 100%;
-        }
-      }
-
-      /* Add these styles to your existing CSS */
-      .no-results {
-        grid-column: 1 / -1;
-        text-align: center;
-        padding: 40px;
-        color: #7f8c8d;
-      }
-
-      .no-results i {
-        font-size: 50px;
-        margin-bottom: 20px;
-        color: #ddd;
-      }
-
-      .no-results h3 {
-        font-size: 24px;
-        margin-bottom: 10px;
-        color: #2c3e50;
-      }
-
-      .no-results p {
-        font-size: 16px;
-      }
-
-      .book-card {
-        transition: all 0.3s ease;
-      }
-
-      .book-card.hidden {
-        display: none;
+        border-color: #e74c3c;
       }
     </style>
   </head>
@@ -505,10 +286,15 @@
           <ul>
             <li><a href="../index.html">Home</a></li>
             <li><a href="./shop.html">Shop</a></li>
-
             <li><a href="./mycart.html">Cart</a></li>
             <li><a href="./myfavouritespage.html">Favourites</a></li>
             <li><a href="./contactus.html">Contact</a></li>
+            <li>
+              <a href="Registration.html" class="login-btn">
+                <i class="fas fa-user login-icon"></i>
+                Login
+              </a>
+            </li>
           </ul>
         </nav>
       </div>
@@ -519,72 +305,11 @@
       <div class="container">
         <h2 class="section-title">Our Books</h2>
 
-        <!-- Filters -->
-        <div class="shop-filters">
-          <div class="filter-group">
-            <label class="filter-label">Sort By:</label>
-            <select class="filter-select">
-              <option value="popular">Most Popular</option>
-              <option value="newest">Newest</option>
-              <option value="price-low">Price: Low to High</option>
-              <option value="price-high">Price: High to Low</option>
-            </select>
-          </div>
-          <div class="filter-group">
-            <select class="filter-select" hidden></select>
-          </div>
-          <div class="search-box">
-            <i class="fas fa-search search-icon"></i>
-            <input
-              type="text"
-              class="search-input"
-              placeholder="Search books..."
-            />
-          </div>
-        </div>
-
-        <!-- Replace the book-card div with this: -->
-<div class="book-card" data-id="1">
-  <a href="product.html?id=1" class="book-card-link">
-      <div class="book-img">
-          <div class="loading-placeholder"></div>
-          <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-               alt="The Silent Patient" 
-               loading="lazy" 
-               onload="this.classList.add('loaded')" />
-          <span class="book-badge">Bestseller</span>
-      </div>
-      <div class="book-info">
-          <h3 class="book-title">The Silent Patient</h3>
-          <p class="book-author">By Alex Michaelides</p>
-          <div class="book-price">
-              <div>
-                  <span class="price-current">$12.99</span>
-                  <span class="price-original">$16.99</span>
-              </div>
-              <span>⭐ 4.5</span>
-          </div>
-      </div>
-  </a>
-  <div class="book-actions">
-      <button class="add-to-cart">
-          <i class="fas fa-shopping-cart"></i>
-          Add to Cart
-      </button>
-      <button class="add-to-favorites">
-          <i class="far fa-heart"></i>
-      </button>
-  </div>
-</div>
-        </div>
+        <!-- Books Grid -->
+        <div class="books-grid"></div>
 
         <!-- Pagination -->
-        <div class="pagination">
-          <button class="pagination-btn active">1</button>
-          <button class="pagination-btn">2</button>
-          <button class="pagination-btn">3</button>
-          <button class="pagination-btn">Next</button>
-        </div>
+        <div class="pagination"></div>
       </div>
     </section>
 
@@ -603,15 +328,15 @@
             <h3>Quick Links</h3>
             <ul>
               <li><a href="index.html">Home</a></li>
-              <li><a href="shop.html">Shop</a></li>
-              <li><a href="categories.html">Categories</a></li>
-              <li><a href="about.html">About Us</a></li>
+              <li><a href="/E-commerce project - BookShop/Pages/shop.html">Shop</a></li>
+              <li><a href="">Categories</a></li>
+              <li><a href="/E-commerce project - BookShop/Pages/Aboutus.html">About Us</a></li>
             </ul>
           </div>
           <div class="footer-column">
             <h3>Customer Service</h3>
             <ul>
-              <li><a href="contact.html">Contact Us</a></li>
+              <li><a href="/E-commerce project - BookShop/Pages/contactus.html">Contact Us</a></li>
               <li><a href="#">FAQs</a></li>
               <li><a href="#">Shipping Policy</a></li>
               <li><a href="#">Returns</a></li>
@@ -626,16 +351,6 @@
 
     <script src="../script.js"></script>
     <script>
-      // Initialize cart and favorites count on page load
-      document.addEventListener("DOMContentLoaded", () => {
-        updateCartCount();
-        updateFavoritesCount();
-        updateFavoritesButtons();
-        initializeSearch();
-        initializeFilters();
-        displayBooks();
-      });
-
       // Array of books
       const books = [
         {
@@ -707,6 +422,16 @@
             "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
           badge: "New",
           rating: "4.7",
+        },
+        {
+          id: "8",
+          title: "The Hobbit",
+          author: "By J.R.R. Tolkien",
+          price: "$11.99",
+          originalPrice: "$14.99",
+          image:
+            "https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+          rating: "4.9",
         },
         {
           id: "8",
@@ -853,212 +578,63 @@
 
       // Function to display books
       function displayBooks(page = 1, itemsPerPage = 8) {
-        displayFilteredBooks(books, page, itemsPerPage);
-      }
-
-      // Function to update favorites button states
-      function updateFavoritesButtons() {
-        const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-        document.querySelectorAll(".book-card").forEach((card) => {
-          const heartBtn = card.querySelector(".add-to-favorites i");
-          const bookId = card.dataset.id;
-          if (favorites.some((item) => item.id === bookId)) {
-            heartBtn.classList.remove("far");
-            heartBtn.classList.add("fas");
-            heartBtn.parentElement.style.backgroundColor = "#e74c3c";
-            heartBtn.parentElement.style.color = "white";
-          } else {
-            heartBtn.classList.remove("fas");
-            heartBtn.classList.add("far");
-            heartBtn.parentElement.style.backgroundColor = "transparent";
-            heartBtn.parentElement.style.color = "#e74c3c";
-          }
-        });
-      }
-
-      // Initialize filters and sorting
-      function initializeFilters() {
-        const categorySelect = document.querySelector(".filter-select");
-        const sortSelect = document.querySelectorAll(".filter-select")[1];
-
-        // Category filter
-        // categorySelect.addEventListener("change", (e) => {
-        //   const selectedCategory = e.target.value.toLowerCase();
-        //   filterBooks(selectedCategory, sortSelect.value);
-        // });
-
-        // Sort filter
-        sortSelect.addEventListener("change", (e) => {
-          const selectedSort = e.target.value;
-          filterBooks("all", selectedSort);
-        });
-      }
-
-      // Filter and sort books
-      function filterBooks(category, sortBy, page = 1, itemsPerPage = 8) {
-        let filteredBooks = [...books];
-
-        // Apply category filter
-        if (category !== "all") {
-          filteredBooks = filteredBooks.filter((book) => {
-            if (book.badge) {
-              return book.badge.toLowerCase() === category;
-            }
-            return false;
-          });
-        }
-
-        // Apply sorting
-        filteredBooks.sort((a, b) => {
-          const priceA = parseFloat(a.price.replace("$", ""));
-          const priceB = parseFloat(b.price.replace("$", ""));
-          const ratingA = parseFloat(a.rating);
-          const ratingB = parseFloat(b.rating);
-
-          switch (sortBy) {
-            case "price-low":
-              return priceA - priceB;
-            case "price-high":
-              return priceB - priceA;
-            case "rating":
-              return ratingB - ratingA;
-            case "newest":
-              return parseInt(b.id) - parseInt(a.id);
-            default:
-              return 0;
-          }
-        });
-
-        // Display filtered books with pagination
-        displayFilteredBooks(filteredBooks, page);
-      }
-
-      // Function to display filtered books with pagination
-      function displayFilteredBooks(filteredBooks, page = 1, itemsPerPage = 8) {
         const booksGrid = document.querySelector(".books-grid");
         const paginationContainer = document.querySelector(".pagination");
         let booksHTML = "";
 
         // Calculate total pages
-        const totalPages = Math.ceil(filteredBooks.length / itemsPerPage);
+        const totalPages = Math.ceil(books.length / itemsPerPage);
 
         // Calculate start and end index for current page
         const startIndex = (page - 1) * itemsPerPage;
         const endIndex = startIndex + itemsPerPage;
-        const currentBooks = filteredBooks.slice(startIndex, endIndex);
+        const currentBooks = books.slice(startIndex, endIndex);
 
-        if (currentBooks.length === 0) {
-          booksHTML = `
-            <div class="no-results">
-              <i class="fas fa-search"></i>
-              <h3>No books found</h3>
-              <p>Try adjusting your search</p>
-            </div>
-          `;
-        } else {
-          for (let i = 0; i < currentBooks.length; i++) {
-            const book = currentBooks[i];
-            booksHTML += `
-              <div class="book-card" data-id="${book.id}">
-                <div class="book-img">
-                  <div class="loading-placeholder"></div>
-                  <img 
-                    data-src="${book.image}" 
-                    alt="${book.title}"
-                    class="lazy"
-                  >
+        // Generate HTML for books
+        currentBooks.forEach((book) => {
+          booksHTML += `
+            <div class="book-card" data-id="${book.id}">
+              <div class="book-img">
+                <img src="${book.image}" alt="${book.title}" />
+                ${
+                  book.badge
+                    ? `<span class="book-badge">${book.badge}</span>`
+                    : ""
+                }
+              </div>
+              <div class="book-info">
+                <a href="./product.html?id=${book.id}" class="book-title-link">
+                  <h3 class="book-title">${book.title}</h3>
+                </a>
+                <p class="book-author">${book.author}</p>
+                <div class="book-price">
+                  <span class="price-current">${book.price}</span>
                   ${
-                    book.badge
-                      ? `<span class="book-badge">${book.badge}</span>`
+                    book.originalPrice
+                      ? `<span class="price-original">${book.originalPrice}</span>`
                       : ""
                   }
                 </div>
-                <div class="book-info">
-                  <h3 class="book-title">${book.title}</h3>
-                  <p class="book-author">${book.author}</p>
-                  <div class="book-price">
-                    <div>
-                      <span class="price-current">${book.price}</span>
-                      ${
-                        book.originalPrice
-                          ? `<span class="price-original">${book.originalPrice}</span>`
-                          : ""
-                      }
-                    </div>
-                    <span>⭐ ${book.rating}</span>
-                  </div>
-                  <div class="book-actions">
-                    <button class="add-to-cart">
-                      <i class="fas fa-shopping-cart"></i>
-                      Add to Cart
-                    </button>
-                    <button class="add-to-favorites">
-                      <i class="far fa-heart"></i>
-                    </button>
-                  </div>
+                <span>⭐ ${book.rating}</span>
+                <div class="book-actions">
+                  <button class="add-to-cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    Add to Cart
+                  </button>
+                  <button class="add-to-favorites">
+                    <i class="far fa-heart"></i>
+                  </button>
                 </div>
               </div>
-            `;
-          }
-        }
+            </div>
+          `;
+        });
 
         booksGrid.innerHTML = booksHTML;
 
-        // Initialize lazy loading for images
-        const lazyImages = booksGrid.querySelectorAll("img.lazy");
-
-        if ("loading" in HTMLImageElement.prototype) {
-          // Browser supports native lazy loading
-          lazyImages.forEach((img) => {
-            img.setAttribute("loading", "lazy");
-            img.src = img.dataset.src;
-            img.onload = () => {
-              img.classList.add("loaded");
-              const placeholder = img.previousElementSibling;
-              if (
-                placeholder &&
-                placeholder.classList.contains("loading-placeholder")
-              ) {
-                placeholder.remove();
-              }
-            };
-          });
-        } else {
-          // Fallback for browsers that don't support lazy loading
-          const imageObserver = new IntersectionObserver(
-            (entries, observer) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  const img = entry.target;
-                  img.src = img.dataset.src;
-                  img.onload = () => {
-                    img.classList.add("loaded");
-                    const placeholder = img.previousElementSibling;
-                    if (
-                      placeholder &&
-                      placeholder.classList.contains("loading-placeholder")
-                    ) {
-                      placeholder.remove();
-                    }
-                  };
-                  observer.unobserve(img);
-                }
-              });
-            },
-            {
-              rootMargin: "50px 0px",
-              threshold: 0.1,
-            }
-          );
-
-          lazyImages.forEach((img) => {
-            imageObserver.observe(img);
-          });
-        }
-
         // Generate pagination buttons
         let paginationHTML = "";
-        if (filteredBooks.length > 0) {
+        if (books.length > 0) {
           // Previous button
           paginationHTML += `
             <button class="pagination-btn ${
@@ -1098,55 +674,15 @@
             button.addEventListener("click", () => {
               const newPage = parseInt(button.dataset.page);
               if (newPage >= 1 && newPage <= totalPages) {
-                displayFilteredBooks(filteredBooks, newPage);
+                displayBooks(newPage);
               }
             });
           });
-
-        updateFavoritesButtons();
       }
 
-      // Search functionality
-      function initializeSearch() {
-        const searchInput = document.querySelector(".search-input");
-
-        if (!searchInput) {
-          console.error("Search input element not found");
-          return;
-        }
-
-        searchInput.addEventListener("input", (e) => {
-          const searchTerm = e.target.value.toLowerCase().trim();
-          let filteredBooks = books.filter(
-            (book) =>
-              book.title.toLowerCase().includes(searchTerm) ||
-              book.author.toLowerCase().includes(searchTerm)
-          );
-
-          // Display filtered books with pagination
-          displayFilteredBooks(filteredBooks, 1);
-        });
-      }
-
-      // Add event listeners to all "Add to Cart" and "Add to Favorites" buttons
-      document.addEventListener("click", (e) => {
-        if (e.target.classList.contains("add-to-cart")) {
-          const bookCard = e.target.closest(".book-card");
-          const bookId = bookCard.dataset.id;
-          const book = books.find((b) => b.id === bookId);
-          addToCart(book);
-        }
-
-        if (
-          e.target.classList.contains("add-to-favorites") ||
-          e.target.closest(".add-to-favorites")
-        ) {
-          const bookCard = e.target.closest(".book-card");
-          const bookId = bookCard.dataset.id;
-          const book = books.find((b) => b.id === bookId);
-          toggleFavorite(book);
-          updateFavoritesButtons();
-        }
+      // Initialize page
+      document.addEventListener("DOMContentLoaded", () => {
+        displayBooks();
       });
     </script>
   </body>
