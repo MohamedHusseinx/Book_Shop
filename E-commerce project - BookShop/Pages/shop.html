@@ -209,6 +209,24 @@
         background-color: #f5f5f5;
       }
 
+      .book-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.book-card-link:hover {
+    text-decoration: none;
+}
+
+.book-card {
+    position: relative;
+}
+
+.book-actions {
+    padding: 0 20px 20px;
+}
+
       .book-img img {
         width: 100%;
         height: 100%;
@@ -525,271 +543,39 @@
           </div>
         </div>
 
-        <!-- Books Grid -->
-        <div class="books-grid">
-          <!-- Book 1 -->
-          <div class="book-card" data-id="1">
-            <div class="book-img">
-              <div class="loading-placeholder"></div>
-              <img
-                src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                alt="The Silent Patient"
-                loading="lazy"
-                onload="this.classList.add('loaded')"
-              />
-              <span class="book-badge">Bestseller</span>
-            </div>
-            <div class="book-info">
-              <h3 class="book-title">The Silent Patient</h3>
-              <p class="book-author">By Alex Michaelides</p>
-              <div class="book-price">
-                <div>
+        <!-- Replace the book-card div with this: -->
+<div class="book-card" data-id="1">
+  <a href="product.html?id=1" class="book-card-link">
+      <div class="book-img">
+          <div class="loading-placeholder"></div>
+          <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+               alt="The Silent Patient" 
+               loading="lazy" 
+               onload="this.classList.add('loaded')" />
+          <span class="book-badge">Bestseller</span>
+      </div>
+      <div class="book-info">
+          <h3 class="book-title">The Silent Patient</h3>
+          <p class="book-author">By Alex Michaelides</p>
+          <div class="book-price">
+              <div>
                   <span class="price-current">$12.99</span>
                   <span class="price-original">$16.99</span>
-                </div>
-                <span>⭐ 4.5</span>
               </div>
-              <div class="book-actions">
-                <button class="add-to-cart">
-                  <i class="fas fa-shopping-cart"></i>
-                  Add to Cart
-                </button>
-                <button class="add-to-favorites">
-                  <i class="far fa-heart"></i>
-                </button>
-              </div>
-            </div>
+              <span>⭐ 4.5</span>
           </div>
-
-          <!-- Book 2 -->
-          <div class="book-card" data-id="2">
-            <div class="book-img">
-              <div class="loading-placeholder"></div>
-              <img
-                src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                alt="Educated"
-                loading="lazy"
-                onload="this.classList.add('loaded')"
-              />
-            </div>
-            <div class="book-info">
-              <h3 class="book-title">Educated</h3>
-              <p class="book-author">By Tara Westover</p>
-              <div class="book-price">
-                <div>
-                  <span class="price-current">$14.99</span>
-                </div>
-                <span>⭐ 4.7</span>
-              </div>
-              <div class="book-actions">
-                <button class="add-to-cart">
-                  <i class="fas fa-shopping-cart"></i>
-                  Add to Cart
-                </button>
-                <button class="add-to-favorites">
-                  <i class="far fa-heart"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Book 3 -->
-          <div class="book-card" data-id="3">
-            <div class="book-img">
-              <div class="loading-placeholder"></div>
-              <img
-                src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                alt="To Kill a Mockingbird"
-                loading="lazy"
-                onload="this.classList.add('loaded')"
-              />
-              <span class="book-badge">Classic</span>
-            </div>
-            <div class="book-info">
-              <h3 class="book-title">To Kill a Mockingbird</h3>
-              <p class="book-author">By Harper Lee</p>
-              <div class="book-price">
-                <div>
-                  <span class="price-current">$10.99</span>
-                  <span class="price-original">$12.99</span>
-                </div>
-                <span>⭐ 4.8</span>
-              </div>
-              <div class="book-actions">
-                <button class="add-to-cart">
-                  <i class="fas fa-shopping-cart"></i>
-                  Add to Cart
-                </button>
-                <button class="add-to-favorites">
-                  <i class="far fa-heart"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Book 4 -->
-          <div class="book-card" data-id="4">
-            <div class="book-img">
-              <div class="loading-placeholder"></div>
-              <img
-                src="https://images.unsplash.com/photo-1531346878377-a5be20888e57?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                alt="1984"
-                loading="lazy"
-                onload="this.classList.add('loaded')"
-              />
-            </div>
-            <div class="book-info">
-              <h3 class="book-title">1984</h3>
-              <p class="book-author">By George Orwell</p>
-              <div class="book-price">
-                <div>
-                  <span class="price-current">$9.99</span>
-                </div>
-                <span>⭐ 4.6</span>
-              </div>
-              <div class="book-actions">
-                <button class="add-to-cart">
-                  <i class="fas fa-shopping-cart"></i>
-                  Add to Cart
-                </button>
-                <button class="add-to-favorites">
-                  <i class="far fa-heart"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Book 5 -->
-          <div class="book-card" data-id="5">
-            <div class="book-img">
-              <div class="loading-placeholder"></div>
-              <img
-                src="https://images.unsplash.com/photo-1535905557558-afc4877a26fc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                alt="The Great Gatsby"
-                loading="lazy"
-                onload="this.classList.add('loaded')"
-              />
-              <span class="book-badge">Sale</span>
-            </div>
-            <div class="book-info">
-              <h3 class="book-title">The Great Gatsby</h3>
-              <p class="book-author">By F. Scott Fitzgerald</p>
-              <div class="book-price">
-                <div>
-                  <span class="price-current">$8.99</span>
-                  <span class="price-original">$14.99</span>
-                </div>
-                <span>⭐ 4.4</span>
-              </div>
-              <div class="book-actions">
-                <button class="add-to-cart">
-                  <i class="fas fa-shopping-cart"></i>
-                  Add to Cart
-                </button>
-                <button class="add-to-favorites">
-                  <i class="far fa-heart"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Book 6 -->
-          <div class="book-card" data-id="6">
-            <div class="book-img">
-              <div class="loading-placeholder"></div>
-              <img
-                src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                alt="Where the Crawdads Sing"
-                loading="lazy"
-                onload="this.classList.add('loaded')"
-              />
-            </div>
-            <div class="book-info">
-              <h3 class="book-title">Where the Crawdads Sing</h3>
-              <p class="book-author">By Delia Owens</p>
-              <div class="book-price">
-                <div>
-                  <span class="price-current">$13.99</span>
-                </div>
-                <span>⭐ 4.8</span>
-              </div>
-              <div class="book-actions">
-                <button class="add-to-cart">
-                  <i class="fas fa-shopping-cart"></i>
-                  Add to Cart
-                </button>
-                <button class="add-to-favorites">
-                  <i class="far fa-heart"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Book 7 -->
-          <div class="book-card" data-id="7">
-            <div class="book-img">
-              <div class="loading-placeholder"></div>
-              <img
-                src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                alt="Dune"
-                loading="lazy"
-                onload="this.classList.add('loaded')"
-              />
-              <span class="book-badge">New</span>
-            </div>
-            <div class="book-info">
-              <h3 class="book-title">Dune</h3>
-              <p class="book-author">By Frank Herbert</p>
-              <div class="book-price">
-                <div>
-                  <span class="price-current">$15.99</span>
-                </div>
-                <span>⭐ 4.7</span>
-              </div>
-              <div class="book-actions">
-                <button class="add-to-cart">
-                  <i class="fas fa-shopping-cart"></i>
-                  Add to Cart
-                </button>
-                <button class="add-to-favorites">
-                  <i class="far fa-heart"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Book 8 -->
-          <div class="book-card" data-id="8">
-            <div class="book-img">
-              <div class="loading-placeholder"></div>
-              <img
-                src="https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                alt="The Hobbit"
-                loading="lazy"
-                onload="this.classList.add('loaded')"
-              />
-            </div>
-            <div class="book-info">
-              <h3 class="book-title">The Hobbit</h3>
-              <p class="book-author">By J.R.R. Tolkien</p>
-              <div class="book-price">
-                <div>
-                  <span class="price-current">$11.99</span>
-                  <span class="price-original">$14.99</span>
-                </div>
-                <span>⭐ 4.9</span>
-              </div>
-              <div class="book-actions">
-                <button class="add-to-cart">
-                  <i class="fas fa-shopping-cart"></i>
-                  Add to Cart
-                </button>
-                <button class="add-to-favorites">
-                  <i class="far fa-heart"></i>
-                </button>
-              </div>
-            </div>
-          </div>
+      </div>
+  </a>
+  <div class="book-actions">
+      <button class="add-to-cart">
+          <i class="fas fa-shopping-cart"></i>
+          Add to Cart
+      </button>
+      <button class="add-to-favorites">
+          <i class="far fa-heart"></i>
+      </button>
+  </div>
+</div>
         </div>
 
         <!-- Pagination -->

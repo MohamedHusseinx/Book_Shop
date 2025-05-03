@@ -245,6 +245,7 @@
         font-weight: bold;
         transition: background-color 0.3s;
       }
+      
 
       .newsletter-form button:hover {
         background-color: #c0392b;
@@ -383,72 +384,134 @@
           <!-- Book 1 -->
           <div class="book-card" data-id="1">
             <div class="book-img">
+              <div class="loading-placeholder"></div>
               <img
                 src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                alt="Book Cover"
+                alt="The Silent Patient"
+                loading="lazy"
+                onload="this.classList.add('loaded')"
               />
+              <span class="book-badge">Bestseller</span>
             </div>
             <div class="book-info">
               <h3 class="book-title">The Silent Patient</h3>
               <p class="book-author">By Alex Michaelides</p>
-              <p class="book-price">$12.99</p>
-              <button class="add-to-cart">Add to Cart</button>
-              <button class="add-to-favorites">Add to Favorites</button>
+              <div class="book-price">
+                <div>
+                  <span class="price-current">$12.99</span>
+                  <span class="price-original">$16.99</span>
+                </div>
+                <span>⭐ 4.5</span>
+              </div>
+              <div class="book-actions">
+                <button class="add-to-cart">
+                  <i class="fas fa-shopping-cart"></i>
+                  Add to Cart
+                </button>
+                <button class="add-to-favorites">
+                  <i class="far fa-heart"></i>
+                </button>
+              </div>
             </div>
           </div>
 
           <!-- Book 2 -->
           <div class="book-card" data-id="2">
             <div class="book-img">
+              <div class="loading-placeholder"></div>
               <img
                 src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                alt="Book Cover"
+                alt="Educated"
+                loading="lazy"
+                onload="this.classList.add('loaded')"
               />
             </div>
             <div class="book-info">
               <h3 class="book-title">Educated</h3>
               <p class="book-author">By Tara Westover</p>
-              <p class="book-price">$14.99</p>
-              <button class="add-to-cart">Add to Cart</button>
-              <button class="add-to-favorites">Add to Favorites</button>
+              <div class="book-price">
+                <div>
+                  <span class="price-current">$14.99</span>
+                </div>
+                <span>⭐ 4.7</span>
+              </div>
+              <div class="book-actions">
+                <button class="add-to-cart">
+                  <i class="fas fa-shopping-cart"></i>
+                  Add to Cart
+                </button>
+                <button class="add-to-favorites">
+                  <i class="far fa-heart"></i>
+                </button>
+              </div>
             </div>
           </div>
 
           <!-- Book 3 -->
           <div class="book-card" data-id="3">
             <div class="book-img">
+              <div class="loading-placeholder"></div>
               <img
                 src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                alt="Book Cover"
+                alt="To Kill a Mockingbird"
+                loading="lazy"
+                onload="this.classList.add('loaded')"
               />
+              <span class="book-badge">Classic</span>
             </div>
             <div class="book-info">
               <h3 class="book-title">To Kill a Mockingbird</h3>
               <p class="book-author">By Harper Lee</p>
-              <p class="book-price">$10.99</p>
-              <button class="add-to-cart">Add to Cart</button>
-              <button class="add-to-favorites">Add to Favorites</button>
+              <div class="book-price">
+                <div>
+                  <span class="price-current">$10.99</span>
+                  <span class="price-original">$12.99</span>
+                </div>
+                <span>⭐ 4.8</span>
+              </div>
+              <div class="book-actions">
+                <button class="add-to-cart">
+                  <i class="fas fa-shopping-cart"></i>
+                  Add to Cart
+                </button>
+                <button class="add-to-favorites">
+                  <i class="far fa-heart"></i>
+                </button>
+              </div>
             </div>
           </div>
 
           <!-- Book 4 -->
           <div class="book-card" data-id="4">
             <div class="book-img">
+              <div class="loading-placeholder"></div>
               <img
                 src="https://images.unsplash.com/photo-1531346878377-a5be20888e57?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                alt="Book Cover"
+                alt="1984"
+                loading="lazy"
+                onload="this.classList.add('loaded')"
               />
             </div>
             <div class="book-info">
               <h3 class="book-title">1984</h3>
               <p class="book-author">By George Orwell</p>
-              <p class="book-price">$9.99</p>
-              <button class="add-to-cart">Add to Cart</button>
-              <button class="add-to-favorites">Add to Favorites</button>
+              <div class="book-price">
+                <div>
+                  <span class="price-current">$9.99</span>
+                </div>
+                <span>⭐ 4.6</span>
+              </div>
+              <div class="book-actions">
+                <button class="add-to-cart">
+                  <i class="fas fa-shopping-cart"></i>
+                  Add to Cart
+                </button>
+                <button class="add-to-favorites">
+                  <i class="far fa-heart"></i>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
     </section>
 
     <!-- Footer -->
