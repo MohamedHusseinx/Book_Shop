@@ -19,10 +19,19 @@
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       }
 
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
       body {
         background-color: #f5f5f5;
         color: #333;
         line-height: 1.6;
+        display: flex;
+        flex-direction: column;
       }
 
       .container {
@@ -99,6 +108,7 @@
       /* Favorites Section */
       .favorites {
         padding: 60px 0;
+        flex: 1;
       }
 
       .section-title {
@@ -188,8 +198,8 @@
 
       .favorite-actions {
         display: flex;
-        flex-direction: column;
-        gap: 10px;
+        gap: 10px; /* Add spacing between buttons */
+        justify-content: flex-start; /* Align buttons to the left */
       }
 
       .move-to-cart {
@@ -224,6 +234,37 @@
         align-items: center;
         justify-content: center;
         gap: 8px;
+      }
+
+      .remove-favorite:hover {
+        background-color: #e74c3c;
+        color: white;
+      }
+
+      .add-to-cart,
+      .remove-favorite {
+        background-color: #2c3e50;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+        width: auto; /* Prevent buttons from stretching */
+        min-width: 120px; /* Set a consistent minimum width */
+        max-width: 200px; /* Optional: Limit the maximum width */
+      }
+
+      .add-to-cart:hover {
+        background-color: #1a252f;
+      }
+
+      .remove-favorite {
+        background-color: #f8f8f8;
+        color: #e74c3c;
+        border: 1px solid #e74c3c;
       }
 
       .remove-favorite:hover {
@@ -266,6 +307,9 @@
         background-color: #1a252f;
         color: #bdc3c7;
         padding: 40px 0 20px;
+        position: relative;
+        bottom: 0;
+        width: 100%;
       }
 
       .footer-content {
@@ -421,5 +465,40 @@
         }
       });
     </script>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>Book Shop</h3>
+            <p>
+              Your one-stop shop for all your reading needs. We offer a wide
+              selection of books across all genres.
+            </p>
+          </div>
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="./shop.html">Shop</a></li>
+              <li><a href="./categories.html">Categories</a></li>
+              <li><a href="./about.html">About Us</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Customer Service</h3>
+            <ul>
+              <li><a href="./contactus.html">Contact Us</a></li>
+              <li><a href="./FAQ.html">FAQs</a></li>
+              <li><a href="./shippingpolicy.html">Shipping Policy</a></li>
+              <li><a href="./returns.html">Returns</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2025 Book Shop. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
